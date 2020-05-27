@@ -1,7 +1,7 @@
-# Railone API
+# Railone API Documentation
 
 - [Railone API](#Railone-API)
-- [API Specifications](API Specifications)
+- [API Specifications](API-Specifications)
 - [1.Institution](#Institution)
      - [1.1 Query Card type](#Query-Card-type)
      - [1.2 Query customer balance](#Query-customer-balance)

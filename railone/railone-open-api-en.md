@@ -1,5 +1,7 @@
 # Railone API
 
+- [Railone API](#Railone API)
+- [API Specifications](API Specifications)
 - [1.Institution](#Institution)
      - [1.1 Query Card type](#Query-Card-type)
      - [1.2 Query customer balance](#Query-customer-balance)
@@ -52,6 +54,20 @@
      - [8.2 Identity Authentication Error Codes](#Identity-Authentication-Error-Codes)
      - [8.3 Abnormal Status Error Codes](#Abnormal-Status-Error-Codes)
      - [8.4 KYC Failure Error Codes](#KYC-Failure-Error-Codes)
+
+
+## Railone API
+
+Welcome to the Railone API documentation. This document is aimed at Railone ToB's card business. Currently, it supports multiple card types. Different cards support different fiat and fees. API usage steps are as follows:
+
+1. Please register an institution account at [https://www.railone.io/](https://www.railone.io/), and if you are unable to access, please provide your IP address.
+2. After the Railone audit is passed, the institution can login successfully.
+3. Checks the wallet address and deposit, support USDT, BTC, ETH, etc..
+4. Create Appkey and secret, and optionally configure webhook callback address.
+5. Call the API for KYC, card opening, card activation, deposit and other operations. Railone will notify through the callback address when the status changes.
+
+* Test environment (restricted by IP whitelist): https://api.sandbox.railone.io/
+* Production environment (restricted by IP whitelist): https://api.railone.io/
 
 ## API Specifications
 

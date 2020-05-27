@@ -1,5 +1,6 @@
 # Railone API
 
+- [Railone API](#Railone API)
 - [接口规范](#接口规范)
 - [1.机构](#机构)
      - [1.1 支持的卡种类查询](#支持的卡种类查询)
@@ -52,6 +53,19 @@
      - [8.2 身份权限认证错误码](#身份权限认证错误码)
      - [8.3 异常错误码](#异常错误码)
      - [8.4 KYC失败错误码](#KYC失败错误码)
+
+## Railone API
+
+欢迎使用Railone API 文档。本文档是针对Railone ToB的卡业务，目前支持多个卡种类，不同卡种支持的法币和手续费不同。API使用步骤如下：
+
+1. 请在[https://www.railone.io/](https://www.railone.io/)注册机构账户，如果访问不了请提供你的IP地址。
+2. Railone审核通过后，机构才可以登录成功。
+3. 机构登录，查看钱包地址，给钱包充值，支持USDT、BTC、ETH等。
+4. 机构登录，创建Appkey和secret，可选择配置webhook回调地址。
+5. 调用API进行KYC、开卡、激活卡、充值等操作，状态变更Railone会通过回调地址通知机构服务器。
+
+* 测试环境（有IP白名单限制）：https://api.sandbox.railone.io/
+* 生产环境（有IP白名单限制）：https://api.railone.io/
 
 ## 接口规范
 

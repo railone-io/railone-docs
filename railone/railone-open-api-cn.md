@@ -442,27 +442,27 @@ method：POST
 
 | Parameter |  Type  |    Requirement  |Description   |
 | :------------: | :----: | :----------: |:---------- |
-|   acct_no | String | 必填 |机构端用户编号(机构端唯一)，字符长度最大64位|
-|   acct_name | String |必填 |机构端用户名，字符长度最大64位|
-|   first_name | String |必填 |真实用户名，字符长度最大50位|
-|   last_name | String |必填 |真实用户姓，字符长度最大50位|
-|   gender | String |必填 |male:男，female:女，unknown:其他，字符长度最大6位|
+|   acct_no | String | 必填 |机构端用户编号(机构端唯一)，字符长度最大64|
+|   acct_name | String |必填 |机构端用户名，字符长度最大64|
+|   first_name | String |必填 |真实用户名，字符长度最大50|
+|   last_name | String |必填 |真实用户姓，字符长度最大50|
+|   gender | String |必填 |male:男，female:女，unknown:其他，字符长度最大6|
 |   birthday | String |必填 |生日（生日格式为"1990-01-01"）|
-|   city | String |必填 |城市，字符长度最大100位|
-|   state | String |必填 |省份，字符长度最大100位|
-|   country | String |必填 |用户所在国家，字符长度最大50位|
-|   nationality | String |必填 |国籍，字符长度最大255位|
-| doc_no | String |必填 |证件号码，字符长度最大128位|
-| doc_type | String |必填 |证件类型(目前只支持passport): passport: 护照，idcard：身份证，字符长度最大8位|
+|   city | String |必填 |城市，字符长度最大100|
+|   state | String |必填 |省份，字符长度最大100|
+|   country | String |必填 |用户所在国家，字符长度最大50|
+|   nationality | String |必填 |国籍，字符长度最大255|
+| doc_no | String |必填 |证件号码，字符长度最大128|
+| doc_type | String |必填 |证件类型(目前只支持passport): passport: 护照，idcard：身份证，字符长度最大8|
 | front_doc | String |必填 |正面照。base64编码, 照片文件大小应小于2M|
 | back_doc | String |选填 |反面照，doc_type是idcard时必须填写。base64编码，照片文件大小应小于2M|
 | mix_doc | String |必填 |手持证件照。base64编码，照片文件大小应小于2M|
-|   country_code | String |必填 |手机国际区号，如“+86”。字符长度最大5位|
-|   mobile | String |必填 |手机号，字符长度最大32位|
-|  mail | String |必填 |邮箱，不支持163.com的邮箱。字符长度最大64位|
-|   address | String |必填 |通讯地址，银行卡会寄到该地址。字符长度最大256位|
-|   zipcode | String |必填 |邮编，字符长度最大20位|
-|   maiden_name | String |必填 |妈妈的名字，字符长度最大255位|
+|   country_code | String |必填 |手机国际区号，如“+86”。字符长度最大5|
+|   mobile | String |必填 |手机号，字符长度最大32|
+|  mail | String |必填 |邮箱，不支持163.com的邮箱。字符长度最大64|
+|   address | String |必填 |通讯地址，银行卡会寄到该地址。字符长度最大256|
+|   zipcode | String |必填 |邮编，字符长度最大20|
+|   maiden_name | String |必填 |妈妈的名字，字符长度最大255|
 | card_type_id |String |必填 |银行卡种类对应的id,比如 10010001|
 |   kyc_info | text |选填 |KYC 其他信息|
 | mail_verification_code | String |选填 |邮箱验证码|

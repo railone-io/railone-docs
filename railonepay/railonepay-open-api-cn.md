@@ -57,7 +57,7 @@
 
 例如请求 `body` 为：
 
-```javascript
+```
 {
 	"ont_id":"did:ont:Ae9ujqUnAtH9yRiepRvLUE3t9R2NbCTZPG",
 	"amount":190,

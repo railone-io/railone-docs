@@ -1895,6 +1895,7 @@ method：PUT
 |   119004    | Data decryption error |
 |   119005    | Too many API requests |
 |   119006    | Unauthorized API      |
+|   119007    | Public key format error |
 
 
 ### KYC Failure Error Codes

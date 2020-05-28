@@ -252,7 +252,7 @@ EUR card "country,state,city,address" should fill europe country address.
     "zipcode":"100028",
     "maiden_name":"zhang xiaohong",
     "cust_tx_id":"202020420",
-    "front_doc":"{base64 image}",
+    "front_doc":"{base64 image}",   //USD card: size limit 2M, EUR card: size limit 1M
     "mix_doc":"{base64 image}"
 }
 

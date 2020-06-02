@@ -64,8 +64,16 @@
 4. 机构登录，创建 Appkey 和 secret，可选择配置 webhook 回调地址。
 5. 调用 API 进行 KYC、开卡、激活卡、充值等操作，状态变更 Railone 会通过回调地址通知机构服务器。
 
-* 测试环境（有IP白名单限制）: https://api.sandbox.railone.io/
-* 生产环境（有IP白名单限制）: https://api.railone.io/
+
+机构 Dashboard :
+
+* 测试环境（有IP白名单限制）: https://customer.sandbox.railone.io/
+* 生产环境（有IP白名单限制）: https://customer.railone.io/
+
+API 域名：
+
+* 测试环境: https://api.sandbox.railone.io/
+* 生产环境: https://api.railone.io/
 
 ## 接口规范
 

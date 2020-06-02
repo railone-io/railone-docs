@@ -68,6 +68,16 @@ Welcome to the Railone API documentation. This document is aimed at Railone ToB'
 * Test environment (restricted by IP whitelist): https://api.sandbox.railone.io/
 * Production environment (restricted by IP whitelist): https://api.railone.io/
 
+Dashboard :
+
+* Test environment dashboard: https://customer.sandbox.railone.io/
+* Production environment dashboard: https://customer.railone.io/
+
+API :
+
+* Test environment (restricted by IP whitelist): https://api.sandbox.railone.io/
+* Production environment (restricted by IP whitelist): https://api.railone.io/
+
 ## API Specifications
 
 - API requests use `HMAC` authentication.

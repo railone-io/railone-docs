@@ -70,13 +70,13 @@ Welcome to the Railone API documentation. This document is aimed at Railone ToB'
 
 Dashboard :
 
-* Test environment dashboard: https://customer.sandbox.railone.io/
-* Production environment dashboard: https://customer.railone.io/
+* Test environment dashboard (restricted by IP whitelist): https://customer.sandbox.railone.io/
+* Production environment dashboard (restricted by IP whitelist): https://customer.railone.io/
 
 API :
 
-* Test environment (restricted by IP whitelist): https://api.sandbox.railone.io/
-* Production environment (restricted by IP whitelist): https://api.railone.io/
+* Test environment: https://api.sandbox.railone.io/
+* Production environment: https://api.railone.io/
 
 ## API Specifications
 

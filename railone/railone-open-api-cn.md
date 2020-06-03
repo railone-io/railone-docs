@@ -1425,6 +1425,7 @@ method：GET 或 POST
 |  encrypt_data    | String[]  |    加密后的数据          |
 |  public_key  |  String    |  公钥    |
 
+> encryt_data解密请参考[RSA例子](https://github.com/railone-io/railone-sdk-java/blob/master/src/test/java/com/railone/open/api/test/RSATest.java#L60) 或 [ECIES例子](https://github.com/railone-io/railone-sdk-java/blob/master/src/test/java/com/railone/open/api/test/BankTest.java#L75)
 
 ### 用户请求重置密码（暂不支持）
 

@@ -1408,6 +1408,7 @@ method：GET or POST
 |  encrypt_data    | String[]  |    encrypted data          |
 |  public_key  |  String    |  public key    |
 
+> encryt_data decrypt [RSA example](https://github.com/railone-io/railone-sdk-java/blob/master/src/test/java/com/railone/open/api/test/RSATest.java#L60) or [ECIES example](https://github.com/railone-io/railone-sdk-java/blob/master/src/test/java/com/railone/open/api/test/BankTest.java#L75)
 
 
 ### User triggers a card withdrawal password reset Email (Currently not supported)

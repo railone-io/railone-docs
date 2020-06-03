@@ -57,7 +57,21 @@
 
 ## Railone API
 
-Welcome to the Railone API documentation. This document is aimed at Railone ToB's card business. Currently, it supports multiple card types. Different cards support different fiat and fees. API usage steps are as follows:
+
+Welcome to the Railone API documentation. This document is aimed at Railone ToB's card business. Currently, it supports three card types, namely F card, J card and P card. The corresponding virtual cards are F-V card, J-V card and P-V card. The fees and the parameters are slightly different for cards.
+
+  | Card name |  Currency  |           distinguish            |
+  | :--------: | :----: | :------------------------------ |
+  |    F卡,F-V卡(ID: 20000001 - 20000008)    |  USD,MYR   |  Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, user will receive an email if KYC successfully, you must click the link in the email before calling the activation interface. Recharge arrival time is within 4h  |
+  |    J卡,J-V卡(ID: 30000001 - 30000008)     | USD,EUR | Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552. The name of the user will be printed on the card, and the card making time need 1-2 weeks. User must submit a POA or hold a card photo when activation card. Recharge arrival time is within 4h |
+  |   P卡,P-V卡(ID: 40000001 - 40000008)   | EUR       |         Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, `country` and `nationality` fill in the two-digit country code。Recharge arrival time is within 4h |
+
+  |  Card name |  Card type  |           distinguish            |
+  | :--------: | :----: | :------------------------------ |
+  |    F,J,P card    |  Physical card  |  The card will be mailed to the user  |
+  |    F-V,J-V,P-V card    |  Virtual card  |  Just get the card information through the API, user can consume online   |
+  
+API usage steps are as follows:
 
 1. Please register an institution account at [https://www.railone.io/](https://www.railone.io/), and if you are unable to access, please provide your IP address.
 2. After the Railone audit is passed, the institution can login successfully.
@@ -65,8 +79,7 @@ Welcome to the Railone API documentation. This document is aimed at Railone ToB'
 4. Create Appkey and secret, and optionally configure webhook callback address.
 5. Call the API for KYC, card opening, card activation, deposit and other operations. Railone will notify through the callback address when the status changes.
 
-* Test environment (restricted by IP whitelist): https://api.sandbox.railone.io/
-* Production environment (restricted by IP whitelist): https://api.railone.io/
+> It is recommended to testing in the test environment before using the production environment, and use the F card to test in the production environment, then test other types of cards.
 
 Dashboard :
 

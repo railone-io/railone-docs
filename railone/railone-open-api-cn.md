@@ -56,18 +56,19 @@
 
 ## Railone API
 
-欢迎使用 Railone API 文档。本文档是针对 Railone ToB 的卡业务，目前支持3个卡种类，分别是F卡、J卡、P卡，对应的虚拟卡是F-V卡、J-V卡、P-V卡，不同卡种支持的法币和手续费不同，接口调用参数也略有差别。
+欢迎使用 Railone API 文档。本文档是针对 Railone ToB 的卡业务，目前支持3个卡种类，分别是F卡、J卡、P卡，对应的虚拟卡是F-M卡、J-M卡、P-M卡，对应的虚拟卡是F-V卡、J-V卡、P-V卡，不同卡种支持的法币和手续费不同，接口调用参数也略有差别。
 
 
   | 卡名 |  法币  |           区别            |
   | :--------: | :----: | :------------------------------ |
-  |    F卡、F-V卡（ID：20000001 - 20000008）    |  USD、MYR   |  KYC审核48h以内，KYC填写只支持英文，mobile格式如 +8615821702552，成功会收到邮件，调用激活接口前必须先点击邮件里的链接。到账时间4h内。  |
-  |    J卡、J-V卡（ID：30000001 - 30000008）     | USD、EUR | KYC审核48h以内，KYC填写只支持英文，mobile格式如 +8615821702552，卡片上会印用户的姓名，制卡时间1-2周。激活时必须提交POA或手持卡片自拍照。到账时间4h内。 |
-  |   P卡、P-V卡（ID：40000001 - 40000008）   | EUR       |         KYC时间1h以内，KYC填写只支持英文， mobile格式如 +86-15821702552，country、nationality填两位国家码。到账时间1h内。 |
+  |    F卡、F-M、F-V卡（ID：20000001 - 20000008）    |  USD、MYR   |  KYC审核48h以内，KYC填写只支持英文，mobile格式如 +8615821702552，成功会收到邮件，调用激活接口前必须先点击邮件里的链接。到账时间4h内。  |
+  |    J卡、J-M、J-V卡（ID：30000001 - 30000008）     | USD、EUR | KYC审核48h以内，KYC填写只支持英文，mobile格式如 +8615821702552，卡片上会印用户的姓名，制卡时间1-2周。激活时必须提交POA或手持卡片自拍照。到账时间4h内。 |
+  |   P卡、P-M、P-V卡（ID：40000001 - 40000008）   | EUR       |         KYC时间1h以内，KYC填写只支持英文， mobile格式如 +86-15821702552，country、nationality填两位国家码。到账时间1h内。 |
 
   | 卡名 |  卡类型  |           区别            |
   | :--------: | :----: | :------------------------------ |
-  |    F、J、P卡    |  实体卡  |  卡片会邮寄给用户  |
+  |    F、J、P卡    |  实体卡  |  塑料材质，卡片会邮寄给用户  |
+  |    F-M、J-M、P-M卡    |  金属卡  |  金属材质，卡片会邮寄给用户   |
   |    F-V、J-V、P-V卡    |  虚拟卡  |  只需通过接口获取卡片信息，可以网上消费   |
   
 API 使用步骤：
@@ -190,6 +191,7 @@ method：GET
                 "bank_id": "5000",
                 "description": "card 1",
                 "card_network": "visa",
+                "card_title": "F",
                 "virtual_card": false
             },
             {
@@ -198,6 +200,7 @@ method：GET
                 "bank_id": "5000",
                 "description": "card 2",
                 "card_network": "visa",
+                "card_title": "F-V",
                 "virtual_card": true
             }
         ]
@@ -213,7 +216,7 @@ method：GET
 |   description   | String |    卡种描述           |
 |   card_network   | String |    发卡机构：visa、master、unionpay           |
 |   virtual_card   | Bool |    是否是虚拟卡           |
-
+|   card_title   | String |    支持F卡、J卡、P卡，对应的金属卡是F-M卡、J-M卡、P-M卡，对应的虚拟卡是F-V卡、J-V卡、P-V卡           |
 
 ### 查询机构余额
 

@@ -58,18 +58,19 @@
 ## Railone API
 
 
-Welcome to the Railone API documentation. This document is aimed at Railone ToB's card business. Currently, it supports three card types, namely F card, J card and P card. The corresponding virtual cards are F-V card, J-V card and P-V card. The fees and the parameters are slightly different for cards.
+Welcome to the Railone API documentation. This document is aimed at Railone ToB's card business. Currently, it supports three card types, namely F card, J card and P card. The corresponding metal cards are F-M card, J-M card and P-M card. The corresponding virtual cards are F-V card, J-V card and P-V card. The fees and the parameters are slightly different for cards.
 
   | Card name |  Currency  |           distinguish            |
   | :--------: | :----: | :------------------------------ |
-  |    F卡,F-V卡(ID: 20000001 - 20000008)    |  USD,MYR   |  Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, user will receive an email if KYC successfully, you must click the link in the email before calling the activation interface. Recharge arrival time is within 4h  |
-  |    J卡,J-V卡(ID: 30000001 - 30000008)     | USD,EUR | Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552. The name of the user will be printed on the card, and the card making time need 1-2 weeks. User must submit a POA or hold a card photo when activation card. Recharge arrival time is within 4h |
-  |   P卡,P-V卡(ID: 40000001 - 40000008)   | EUR       |         Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, `country` and `nationality` fill in the two-digit country code。Recharge arrival time is within 4h |
+  |    F,F-M,F-V card(ID: 20000001 - 20000008)    |  USD,MYR   |  Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, user will receive an email if KYC successfully, you must click the link in the email before calling the activation interface. Recharge arrival time is within 4h  |
+  |    J,J-M,J-V card(ID: 30000001 - 30000008)     | USD,EUR | Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552. The name of the user will be printed on the card, and the card making time need 1-2 weeks. User must submit a POA or hold a card photo when activation card. Recharge arrival time is within 4h |
+  |   P,P-M,P-V card(ID: 40000001 - 40000008)   | EUR       |         Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, `country` and `nationality` fill in the two-digit country code。Recharge arrival time is within 4h |
 
   |  Card name |  Card type  |           distinguish            |
   | :--------: | :----: | :------------------------------ |
-  |    F,J,P card    |  Physical card  |  The card will be mailed to the user  |
+  |    F,J,P card    |  Plastic card  |  Plastic material, The card will be mailed to the user  |
   |    F-V,J-V,P-V card    |  Virtual card  |  Just get the card information through the API, user can consume online   |
+  |    F-M、J-M、P-M卡    |  Metal card  |  Metal material, The card will be mailed to the user   |
   
 API usage steps are as follows:
 
@@ -189,6 +190,7 @@ method：GET
                 "bank_id": "5000",
                 "description": "card 1",
                 "card_network": "visa",
+                "card_title": "F",
                 "virtual_card": false
             },
             {
@@ -197,6 +199,7 @@ method：GET
                 "bank_id": "5000",
                 "description": "card 2",
                 "card_network": "visa",
+                "card_title": "F-V",
                 "virtual_card": true
             }
         ]
@@ -212,6 +215,7 @@ method：GET
 | description |String |description of card type |
 |   card_network   | String |    card network           |
 | virtual_card  | Bool |    virtual card           |
+| card_title  | String |   it supports three card types, namely F card, J card and P card. Metal cards are F-M , J-M and P-M card. Virtual cards are F-V, J-V and P-V card          |
 
 ### Query customer balance
 

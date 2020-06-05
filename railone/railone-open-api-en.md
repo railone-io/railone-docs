@@ -33,7 +33,7 @@
      * [5.1 Query card status](#Query-card-status)
      * [5.2 Query account balance](#Query-account-balance)
      * [5.3 Query transaction records](#Query-transaction-records)
-     * [5.4 Query virtual card information](#Query-virtual-card-information)
+     * [5.4 Query card information](#Query-card-information)
      * [5.5 User triggers a card withdrawal password reset Email (Currently not supported)](#User-triggers-a-card-withdrawal-password-reset-Email-(Currently-not-supported))
 * [6.Verification Code API](#Verification-Code-API)
      * [6.1 Sending Email verification code](#Sending-Email-verification-code)
@@ -1390,12 +1390,12 @@ method：POST
 |      bank_tx_list[0].credit_usd      | String | Credit amount(USD)                                                      |
 |       bank_tx_list[0].type       |  int   | Transaction type, 1. Debit, 2. Deposit, 3. Withdrawal, 4. Transfer |
 
-### Query virtual card information
+### Query card information
 
 - Request:
 
 ```text
-url：/api/v1/bank/virtualcard
+virtual card url：/api/v1/bank/virtualcard, physical card url: /api/v1/bank/card
 method：GET or POST
 ```
 

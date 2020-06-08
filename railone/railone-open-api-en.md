@@ -408,7 +408,8 @@ method：POST
 | fiat_exchange_rate    | String  | exchange rate of card currency/USD              |
 | coin_price    | String  | price of coin_type/USDT              |
 
-> exchange_rate = (currency_amount * fiat_exchange_rate) / ((coin_amount - exchange_fee - loading_fee) * coin_price)
+> (currency_amount * fiat_exchange_rate) = ((coin_amount - exchange_fee - loading_fee) * coin_price) * exchange_rate 
+> arrived USD = deposit USDT * exchange_rate
 
 ### Estimate the deposit amount of crypto  
 
@@ -460,7 +461,8 @@ method：POST
 | fiat_exchange_rate    | String  | exchange rate of card currency/USD              |
 | coin_price    | String  | price of coin_type/USDT              |
 
-> exchange_rate = (currency_amount * fiat_exchange_rate) / ((coin_amount - exchange_fee - loading_fee) * coin_price)
+> (currency_amount * fiat_exchange_rate) = ((coin_amount - exchange_fee - loading_fee) * coin_price) * exchange_rate 
+> arrived USD = deposit USDT * exchange_rate
 
 ## KYC
 

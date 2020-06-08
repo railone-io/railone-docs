@@ -410,7 +410,8 @@ method：POST
 | fiat_exchange_rate    | String  | 卡支持的法币/USD 汇率              |
 | coin_price    | String  | coin_type/USDT 价格              |
 
-> 注： exchange_rate = (currency_amount * fiat_exchange_rate) / ((coin_amount - exchange_fee - loading_fee) * coin_price)
+> (currency_amount * fiat_exchange_rate) = ((coin_amount - exchange_fee - loading_fee) * coin_price) * exchange_rate 
+> 总到账USD = 实际充值USDT * exchange_rate（USDT/USD）
 
 ### 估算需要充值多少数字货币
 
@@ -462,7 +463,8 @@ method：POST
 | fiat_exchange_rate    | String  | 卡支持的法币/USD 汇率              |
 | coin_price    | String  | coin_type/USDT 价格              |
 
-> 注： exchange_rate = (currency_amount * fiat_exchange_rate) / ((coin_amount - exchange_fee - loading_fee) * coin_price)
+> (currency_amount * fiat_exchange_rate) = ((coin_amount - exchange_fee - loading_fee) * coin_price) * exchange_rate 
+> 总到账USD = 实际充值USDT * exchange_rate（USDT/USD）
 
 ## KYC
 

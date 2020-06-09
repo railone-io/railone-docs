@@ -1422,23 +1422,42 @@ method：GET 或 POST
 |  Parameter  | Type  | Whether Required |                        Description                         |
 | :---------: | :---: | :--------------: | :-------------------------------------------------------- |
 | card_no  |  String  |    Required     | card no     |
-| publickey  |  String  |  Optional     | 我们会使用这个公钥替代默认的公钥加密数据   |
+| publickey  |  String  |  Optional     | 我们会使用这个公钥替代默认的公钥加密数据，支持ECIES和RSA   |
 
 - Response:
 
 ```
+ECIES：
 {
     "code": 0,
     "msg": "SUCCESS",
     "result": {
         "encrypt_data": [
-            "3157a4325f87a1febced1871c3f7052b",
-            "048eeb04e3b652aa39294379fb5a90b68db0285d52ef5d988ce0ec382f88091c96c96fc3c446021f55cfabbe3c4bf10f697cb957ce2f98755fd42da8d61dd3b31a",
-            "6c92b79575b8c0318cafd0b9a89a32d93d5e53a2a881fa54296bda01a287e4185f89e9c6b2a08d8c6fbcfebc6e8ddefc15ab9899831f59b946557458654933cf"
+            "f48ef2667c8e2d1f80c1e44408099fe7",
+            "048ce3a29ac8586e8e7291983ba6ea192d0144c2dec5db147fb9d74ebfc635642bd2051c2932c059e271aab3109c507b92cc2275e4ff03e2548e75a741f6531e58",
+            "78263b48508ad00b80552be97c4f74e963de0e722ded84a2c926256b74397b25030ec96f500eeb0bae9d8475c0665b35"
         ],
-        "public_key": "0232dc29734993897a418dd693f089edc425dde6c2d12f29eb907cd548d68e275a"
+        "public_key": "031194af2b8ad8cba709509a630dfcc3746c24dfbbe9af48264df5663ad308e16f"
     }
 }
+
+RSA：
+{
+    "code":0,
+    "msg":"SUCCESS",
+    "result":{
+        "encrypt_data":[
+            "FwLBNaIiXynp7XagRab3HmQPDnaUv3yXv4ZPzvgJ0MWmJg4I7qug/fcVL/kQNeOrYcDQRycM8teN7l+XoBin4AlOVeHNxYEOxnmuLDWcWl88y18D7JFtvQfBHn+KQ96r8B/IFopmUFbqWKexOdLIp/hPwKHpsJv5Thu3t/JrWDk="],
+        "public_key":"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCDtxc+w3LlhtF3DcbgS8zqvjYs8Z+s03DrtbQb8iigeMAbKjXLbrWZwX6IprmVRandLuM3PV3UU7L4SCdJZBRUjgEe0q3F/kUe1XwFhsl4aoW9FHKK/d/em50qHSLXw/KPX2HyZ9Ey9G/bV6OwJXvkUYfStBjHNgPlwFca17QhuQIDAQAB"
+    }
+}
+
+实体卡解密：
+{"card_number":"123456789101212"}
+
+虚拟卡解密：
+{"cvv":"123","card_number":"1001022400001101","expire":"022022"}
+
 ```
 |    Parameter    |  Type   |      Description                                                     |
 | :---------: | :----:   | :--------------------------- |

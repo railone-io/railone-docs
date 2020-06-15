@@ -218,7 +218,7 @@ method：GET
 |   description   | String |    卡种描述           |
 |   card_network   | String |    发卡机构：visa、master、unionpay           |
 |   virtual_card   | Bool |    是否是虚拟卡           |
-|   card_title   | String |    支持F卡、J卡、P卡，对应的金属卡是F-M卡、J-M卡、P-M卡，对应的虚拟卡是F-V卡、J-V卡、P-V卡           |
+|   card_title   | String |    支持F卡、J卡、P卡等，对应的金属卡是F-M*卡、J-M*卡、P-M*卡，对应的虚拟卡是F-V卡、J-V卡、P-V卡           |
 
 ### 查询机构余额
 

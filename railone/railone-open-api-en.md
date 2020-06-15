@@ -218,7 +218,7 @@ method：GET
 | description |String |description of card type |
 |   card_network   | String |    card network           |
 | virtual_card  | Bool |    virtual card           |
-| card_title  | String |   it supports three card types, namely F card, J card and P card. Metal cards are F-M , J-M and P-M card. Virtual cards are F-V, J-V and P-V card          |
+| card_title  | String |   it supports three card types, namely F card, J card and P card. Metal cards are F-M* , J-M* and P-M* card. Virtual cards are F-V, J-V and P-V card          |
 
 ### Query customer balance
 

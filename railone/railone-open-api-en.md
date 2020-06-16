@@ -237,13 +237,18 @@ method：GET
     "msg": "SUCCESS",
     "result": [
         {
-            "balance": "872.5262",
-            "address": [
-                "0x78fdf93079152d506f42042005a0ea89db595c28",
-                "0x6e033252529baab12b8074e2066c96ed35593335",
-                "0xd29d36bb71e4fb2f81fec84828369a668721b2a2"
-            ],
-            "coin_type": "USDT"
+            "addresses":[
+                {
+                    "balance":"100",
+                    "address_type":"deposit",
+                    "address":"0x0e420097975b6c700f6314914a1b6e66a1edc313"
+                },
+                {
+                    "balance":"200",
+                    "address_type":"open_card",
+                    "address":"0x88fee6dda9a041e9ebe6c56924765ff54544e40c"
+                }],
+            "coin_type":"USDT"
         }
     ]
 }
@@ -251,10 +256,10 @@ method：GET
 
 |    Parameter    |  Type   |      Description  |
 | :---------: | :----:   | :--------------------------- |
-| balance    | String  |  coin balance         |
-| address    | String  | coin address         |
 | coin_type    | String  |  coin type         |
-
+| addresses[0].balance    | String  |  coin balance         |
+| addresses[0].address    | String  | coin address         |
+| addresses[0].address_type    | String  | coin address type, 'open card' or 'deposit' address.        |
 
 ### Query institution information
 

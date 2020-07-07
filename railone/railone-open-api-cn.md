@@ -1415,7 +1415,7 @@ method：POST
 |   bank_tx_list[0].debit_usd   | String | 消费金额(USD)  |
 |   bank_tx_list[0].credit   | String | 存入金额(卡支持的货币)   |
 |   bank_tx_list[0].credit_usd   | String | 存入金额(USD)  |
-|   bank_tx_list[0].type   | int | 交易类型，1.消费、2.充值、3.取款、4.转账  |
+|   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出)  |
 
 
 ### 查询银行卡信息

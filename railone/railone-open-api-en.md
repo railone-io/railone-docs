@@ -1960,7 +1960,7 @@ method：PUT
 | :--------------: | --------| 
 |   111003 |   KYC failure   |
 |   1110031 |   KYC failure, country or nationality error   |
-|   1110032|   KYC failure, certificate photo error   |
+|   1110032|   KYC failure, certificate photo error or photo is not clear  |
 |   1110033 |   KYC failure, certificate photo in hand error   |
 |   1110034 |   KYC failure, address error   |
 |   1110035 |   KYC failure, mobile error   |

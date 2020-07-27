@@ -517,7 +517,7 @@ method：POST
 | mail_verification_code | String |     Optional     |                                    Email verification code                                    |
 |       mail_token       | String |     Optional     |                        Token returned upon sending verification Email                         |
 | cust_tx_id            | String | Optional         | customer transaction id|
-| poa_doc | String[3] |Optional |Picture or PDF of proof of address. Base64 encoding. Each file size should be less than 2M|
+| poa_doc | String[3] |Optional |Picture or PDF of proof of address(Currently not supported). Base64 encoding. Each file size should be less than 2M|
 
 - Response:
 
@@ -679,8 +679,8 @@ method：POST
 |  Parameter  | Type  | Whether Required |                        Description                         |
 | :---------: | :---: | :--------------: | :-------------------------------------------------------- |
 |  card_no  |  String  |    Required     | card no     |
-|  poa_doc  |  String[3]  |    Optional     | Picture or PDF of proof of address. Base64 encoding. Each file size should be less than 2M. If you submited poa_doc in KYC don't need do again.    |
-|  active_doc  |  String  |    Optional     | Picture of holding passport and bank card. File size should be less than 2M  |
+|  poa_doc  |  String[3]  |    Optional     | Picture or PDF of proof of address(Currently not supported). Base64 encoding. Each file size should be less than 2M. If you submited poa_doc in KYC don't need do again.    |
+|  active_doc  |  String  |    Optional     | Picture of holding passport and bank card. Base64 encoding. File size should be less than 2M  |
 
 - Response:
 

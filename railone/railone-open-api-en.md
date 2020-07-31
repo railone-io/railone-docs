@@ -63,7 +63,7 @@ Welcome to the Railone API documentation. This document is aimed at Railone ToB'
   | Card name |  Currency  |           distinguish            |
   | :--------: | :----: | :------------------------------ |
   |    F,F-M*,F-V card(ID: 20000001 - 20000009)    |  USD,MYR   |  Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, user will receive an email if KYC successfully, you must click the link in the email before calling the activation interface. Recharge arrival time is within 4h  |
-  |    J,J-M*,J-V card(ID: 30000001 - 30000009)     | USD,EUR | Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552. The name of the user will be printed on the card, and the card making time need 1-2 weeks. User must submit a POA or hold a card photo when activation card. Recharge arrival time is within 4h |
+  |    J,J-M*,J-V card(ID: 30000001 - 30000009)     | USD | Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552. The name of the user will be printed on the card, and the card making time need 1-2 weeks. User must submit hold a card and passport photo when activation card. Recharge arrival time is within 4h |
   |   P,P-M*,P-V card(ID: 40000001 - 40000009)   | EUR       |         Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, `country` and `nationality` fill in the two-digit country code。Recharge arrival time is within 4h |
 
   |  Card name |  Card type  |           distinguish            |
@@ -1399,6 +1399,8 @@ method：POST
 |      bank_tx_list[0].credit      | String | Credit amount(card currency)                                                      |
 |      bank_tx_list[0].credit_usd      | String | Credit amount(USD)                                                      |
 |       bank_tx_list[0].type       |  int   | Transaction type, 1. Debit, 2. Deposit, 3. Withdrawal, 4. Transfer in, 5. Transfer out  |
+|   bank_tx_list[0].tx_currency   | String | Actual transaction currency  |
+|   bank_tx_list[0].tx_amount   | String | Transaction amount of actual transaction currency  |
 
 ### Query card information
 

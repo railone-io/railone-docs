@@ -246,7 +246,7 @@ EUR card "country,state,city,address" should fill europe country address.
     "doc_no":"K1988247",
     "doc_type":"passport",
     "country_code":"86",
-    "mobile":"+86-15821703553", //USD card example: +8615821703553, EUR card example: +86-15821703553
+    "mobile":"+8615821703553", //USD card example: +8615821703553, EUR card example: +8615821703553
     "mail":"test@email.com",
     "address":"123",
     "zipcode":"100028",

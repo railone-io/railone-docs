@@ -822,7 +822,7 @@ method：POST
 |  card_no   | String |     Required     |                           Bank card no.                           |
 |  acct_no   | String |     Required     | Institution account name (Unique within scope of the institution) |
 |   amount   | String |     Required     |             Deposit amount in corresponding coin_type              |
-| coin_type  | String |     Required     |             Only USDT supported yet              |
+| coin_type  | String |     Required     |             Only USDT and RUSD supported yet              |
 | cust_tx_id | String |     Required     |                    Institution transaction ID                     |
 |  remarks   | String |     Optional     |                        Transaction remarks                        |
 
@@ -853,13 +853,13 @@ method：POST
 |     tx_id      | String | Railone transaction ID  |
 |    coin_type    |  int   |          Coin type          |
 |   tx_amount   | String |                        Deposit amount                         |
-|     exchange_fee_rate      | String | Fee rate for exchanging digital coin to USDT   |
-|     exchange_fee      | String | Fee for exchanging digital coin to USDT, Unit: USDT  |
-|     loading_fee      | String | Deposit fee，Unit: USDT   |
-|     deposit_usdt      | String | The amount of USDT deposited for the user after charging loading_fee and exchange_fee, Unit: USDT   |
+|     exchange_fee_rate      | String | Fee rate for exchanging digital coin to coin_type   |
+|     exchange_fee      | String | Fee for exchanging digital coin to coin_type, Unit: coin_type  |
+|     loading_fee      | String | Deposit fee, Unit: coin_type   |
+|     deposit_usdt      | String | The amount of coin_type deposited for the user after charging loading_fee and exchange_fee, Unit: coin_type   |
 |     currency_amount      | String | User received currency amount  |
 |     currency_type      | String | It is card supported currency type |
-|     exchange_rate      | String |  exchange rate of USDT/USD  |
+|     exchange_rate      | String |  exchange rate of coin_type/USD  |
 | fiat_exchange_rate    | String  | exchange rate of card currency/USD              |
 
 > If coin_type is USDT, USDT amount charged from institution balance = exchange_fee + loading_fee + deposit_usdt.
@@ -1398,7 +1398,7 @@ method：POST
 |      bank_tx_list[0].debit_usd       | String | Debit amount(USD)                                                       |
 |      bank_tx_list[0].credit      | String | Credit amount(card currency)                                                      |
 |      bank_tx_list[0].credit_usd      | String | Credit amount(USD)                                                      |
-|       bank_tx_list[0].type       |  int   | Transaction type, 1. Debit, 2. Deposit, 3. Withdrawal, 4. Transfer in, 5. Transfer out, 6. Settlement Adjustment  |
+|       bank_tx_list[0].type       |  int   | Transaction type, 1. Debit, 2. Deposit, 3. Withdrawal, 4. Transfer in, 5. Transfer out, 6. other  7. Settlement Adjustment  |
 |   bank_tx_list[0].tx_currency   | String | Actual transaction currency  |
 |   bank_tx_list[0].tx_amount   | String | Transaction amount of actual transaction currency  |
 

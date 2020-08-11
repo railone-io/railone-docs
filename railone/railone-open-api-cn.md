@@ -839,7 +839,7 @@ method：POST
 |     card_no     | String | 必填|银行卡ID                   |
 |     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
 |     amount      | String | 必填|充值对应币种的金额         |
-|    coin_type    | String | 必填|币种。只支持USDT       |
+|    coin_type    | String | 必填|币种。只支持USDT、RUSD       |
 |   cust_tx_id    | String | 必填|机构的交易流水号           |
 |     remark     | String | 选填|交易备注                   |
 
@@ -870,13 +870,13 @@ method：POST
 |     tx_id      | String | Railone 交易流水id  |
 |    coin_type    | String | 充值币种       |
 |    tx_amount      | String | 充值币种对应的金额         |
-|     deposit_usdt      | String | 扣除手续费后,为用户充值的USDT数量，单位是USDT   |
-|     exchange_fee_rate      | String | 充值币种兑换成USDT的费率   |
-|     exchange_fee      | String | 充值币种兑换成USDT的费用，单位是USDT  |
-|     loading_fee      | String | 充值手续费，单位是USDT   |
+|     deposit_usdt      | String | 扣除手续费后,为用户充值的coin_type数量，单位是coin_type   |
+|     exchange_fee_rate      | String | 充值币种兑换成coin_type的费率   |
+|     exchange_fee      | String | 充值币种兑换成USDT的费用，单位是coin_type  |
+|     loading_fee      | String | 充值手续费，单位是coin_type   |
 |     currency_amount      | String | 到账法币数量  |
 |     currency_type      | String | 到账法币类型  |
-|     exchange_rate      | String | USDT/USD汇率  |
+|     exchange_rate      | String | coin_type/USD汇率  |
 |     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
 
 > 如果coin_type是USDT，从机构扣的USDT费用 = exchange_fee + loading_fee + deposit_usdt。
@@ -1415,7 +1415,7 @@ method：POST
 |   bank_tx_list[0].debit_usd   | String | 消费金额(USD)  |
 |   bank_tx_list[0].credit   | String | 存入金额(卡支持的货币)   |
 |   bank_tx_list[0].credit_usd   | String | 存入金额(USD)  |
-|   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出) 6.结算调整 |
+|   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出) 6.其他 7.结算调整 |
 |   bank_tx_list[0].tx_currency   | String | 实际交易货币  |
 |   bank_tx_list[0].tx_amount   | String | 实际交易货币的交易金额  |
 

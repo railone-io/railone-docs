@@ -12,8 +12,9 @@
      * [1.7 Estimate the deposit amount of crypto](#Estimate-the-deposit-amount-of-crypto)
 * [2.KYC](#KYC)
      * [2.1 Submitting user KYC data](#Submitting-user-KYC-data)
-     * [2.2 Query all KYC records](#Query-all-KYC-records)
-     * [2.3 Query a specific user KYC records](#Query-a-specific-user-KYC-records)
+	 * [2.2 Submitting user KYC attachment (optional)](#Submitting user KYC attachment-optional)
+     * [2.3 Query all KYC records](#Query-all-KYC-records)
+     * [2.4 Query a specific user KYC records](#Query-a-specific-user-KYC-records)
 * [3.Cards](#cards)
      * [3.1 Apply a card](#Apply-a-card)
      * [3.2 Submit active card attachment](#submit-active-card-attachment)
@@ -508,7 +509,7 @@ method：POST
 |        mix_doc         | String |     Required     |                            Photo with certificate in hand. Base64 encoding. File size should be less than 2M |
 |      country_code      | String |     Required     | International country code，for example "+86". Max. character length: 5 |
 |         mobile         | String |     Required     |                           Mobile number, Max. character length: 32                            |
-|          mail          | String |     Required     |                           Email address,don't support 163.com email host. Max. character length: 32                            |
+|          mail          | String |     Required     |                           Email address,don't support 163.com email host. Max. character length: 64                            |
 |        address         | String |     Required     |                          Postal address, the bank card will send tothis address. Max. character length: 256                           |
 |        zipcode         | String |     Required     |                              Zip code, Max. character length: 20                              |
 |      maiden_name       | String |     Required      |                        Your Mother name or put any relative Friend name, Max. character length: 255                         |
@@ -530,6 +531,33 @@ method：POST
 ```
 
 > How to get mail_token and mail_verification_code? Please see "6.1. Sending Email verification code". mail_verification_code is filled by user.
+
+
+### Submitting user KYC attachment (optional)
+
+
+```text
+url：/api/v1/customers/attachments
+method：POST
+```
+> Before calling this interface, you need to successfully call the [Submitting user KYC data] interface. This interface only supports physical card.
+
+- Request：
+
+| Parameter |  Type  |    Requirement  |Description   |
+| :------------: | :----: | :----------: |:---------- |
+|        acct_no         | String |     Required     |         Account serial no. (Unique within the institution), Max. character length: 64         |
+| card_type_id |String |Required | Bank card type id, for example: 10010001|   
+| docs | String[3] |Required |Picture or PDF of AML proof  . Base64 encoding. Each file size should be less than 2M, Max. files: 3 |
+- Response：
+
+```json
+{
+  "code": 0,
+  "msg": "Success",
+  "result": true
+}
+```
 
 
 ### Query all KYC records

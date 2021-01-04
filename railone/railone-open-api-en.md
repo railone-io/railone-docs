@@ -12,7 +12,7 @@
      * [1.7 Estimate the deposit amount of crypto](#Estimate-the-deposit-amount-of-crypto)
 * [2.KYC](#KYC)
      * [2.1 Submitting user KYC data](#Submitting-user-KYC-data)
-	 * [2.2 Submitting user KYC attachment (optional)](#Submitting user KYC attachment-optional)
+	 * [2.2 Submitting user KYC attachment (optional)](#Submitting-user-KYC-attachment-optional)
      * [2.3 Query all KYC records](#Query-all-KYC-records)
      * [2.4 Query a specific user KYC records](#Query-a-specific-user-KYC-records)
 * [3.Cards](#cards)
@@ -21,6 +21,8 @@
      * [3.3 User activating bank card](#User-activating-bank-card)
      * [3.4 Query all active card status](#Query-all-active-card-status)
      * [3.5 Query a specific user card activation status](#Query-a-specific-user-card-activation-status)
+     * [3.6 Request Lock, Unlock, Lost, Renew PIN, Replacement card](#Request-Lock-Unlock-Lost-Renew-PIN-Replacement-card)
+     * [3.7 Query Lock, Unlock, Lost, Renew PIN, Replacement card Status](#Query-Lock-Unlock-Lost-Renew-PIN-Replacement-card-Status)
 * [4.Transactions](#transactions)
      * [4.1 User deposit with stablecoin](#User-deposit-with-stablecoin)
          * [4.2.2 Fixed amount will be received in fiat](#User-deposit-with-stablecoin-Fixed-amount-will-be-received-in-fiat)
@@ -833,6 +835,77 @@ method：GET
 |   card_no   |  int   |                             Card ID                              |
 |   status    |  int   | Status code : 0 - Frozen, 1 - Activated successfully, 2 - Not active, 3 - Under review, 4 - Verification failed, 5 - Apply card failed, card is being made，please apply later |
 | create_time |  long  |                            Creation time                             |
+
+
+
+### Request Lock, Unlock, Lost, Renew PIN, Replacement card
+
+```text
+url：/api/v1/debit-cards/request
+method：PUT
+```
+
+- Request
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+|  acct_no  | String |     Required     | Institution account name (Unique within scope of the institution) |
+|  card_no  | String |     Required     |                           Bank card no.                           |
+| request_type | int | Required    | 1.Lock 2.Unlock 3.Lost 4.Renew PIN 5.Replacement |
+| signature   |  String | Required    | User's hand signature phone, in base64|
+| address   |  String | Optional    | User's address |
+| phone   |  String | Optional    | User's phone |
+
+
+
+- Response：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": true
+}
+```
+
+### Query Lock, Unlock, Lost, Renew PIN, Replacement card Status
+
+```text
+url：/api/v1/debit-cards/request?request_type={request_type}
+method：GET
+```
+
+- Request
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+|  acct_no  | String |     Required     | Institution account name (Unique within scope of the institution) |
+|  card_no  | String |     Required     |                           Bank card no.                           |
+| request_type | int | Required    | 1.Lock 2.Unlock 3.Lost 4.Renew PIN 5.Replacement |
+
+
+
+- Response：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": {
+        "acct_no": "1",
+        "card_no": "4385211202597301",
+        "status": 1,
+        "create_time": 1576847136000  
+  }
+}
+```
+
+| Parameter  |  Type  |             Description             |
+| :--------: | :----: | :------------------------------ |
+|  acct_no  | String |    Institution account name (Unique within scope of the institution) |
+|  card_no  | String |    Bank card no.                           |
+|   status    |  int   | Status code :  0.Pending 1.Successful 2.Failure |
+| create_time |  long  |              create time               |
 
 ## Transactions
 

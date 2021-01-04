@@ -21,6 +21,8 @@
      - [3.3 用户激活卡片](#用户激活卡片)
      - [3.4 查询所有卡片状态](#查询所有卡片状态)
      - [3.5 查询指定用户所有卡片状态](#查询指定用户所有卡片状态)
+     - [3.6 申请冻结、解冻、挂失、重置密码、补卡](#申请冻结-解冻-挂失-重置密码-补卡)
+     - [3.7 查询冻结、解冻、挂失、重置密码、补卡状态](#查询冻结-解冻-挂失-重置密码-补卡状态)
 - [4.充值](#充值)
      - [4.1 用稳定币给用户卡充值](#用稳定币给用户卡充值)
          - [4.1.2 固定到账法币金额](#用稳定币给用户卡充值-指定到账法币金额-)
@@ -848,6 +850,76 @@ method：GET
 |   status    |  int   | 状态码: 0 冻结， 1 激活成功， 2未激活， 3. 激活待审核， 4. 激活审核失败, 5. 申请失败(卡片正在制作中，请过会再申请)|
 | create_time |  long  |              创建时间               |
 
+
+### 申请冻结、解冻、挂失、重置密码、补卡
+
+```text
+url：/api/v1/debit-cards/request
+method：PUT
+```
+
+- 请求
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+|    card_no     | String |      必填    |银行卡ID          |
+| acct_no | String | 必填    |机构端用户编号(机构端唯一) |
+| request_type | int | 必填    | 1.冻结 2.解冻 3.挂失 4.重置密码 5.补卡|
+| signature   |  String | 必填    | 用户的签名照片，用base64格式|
+| address   |  String | 选填    | 用户地址 |
+| phone   |  String | 选填    | 用户手机号 |
+
+
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": true
+}
+```
+
+
+### 查询冻结、解冻、挂失、重置密码、补卡状态
+
+```text
+url：/api/v1/debit-cards/request?request_type={request_type}
+method：GET
+```
+
+- 请求
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+|    card_no     | String |      必填    |银行卡ID          |
+| acct_no | String | 必填    |机构端用户编号(机构端唯一) |
+| request_type | int | 必填    | 1.冻结 2.解冻 3.挂失 4.重置密码 5.补卡|
+
+
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": {
+        "acct_no": "1",
+        "card_no": "4385211202597301",
+        "status": 1,
+        "create_time": 1576847136000  
+  }
+}
+```
+
+| Parameter  |  Type  |             Description             |
+| :--------: | :----: | :------------------------------ |
+|   acct_no   | String |     机构端用户编号(机构端唯一)      |
+|   card_no   |  int   |              银行卡ID               |
+|   status    |  int   | 状态码: 0.处理中 1.成功 2.失败|
+| create_time |  long  |              创建时间               |
 
 ## 充值
 

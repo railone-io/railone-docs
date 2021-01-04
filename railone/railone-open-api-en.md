@@ -852,7 +852,7 @@ method：PUT
 |  acct_no  | String |     Required     | Institution account name (Unique within scope of the institution) |
 |  card_no  | String |     Required     |                           Bank card no.                           |
 | request_type | int | Required    | 1.Lock 2.Unlock 3.Lost 4.Renew PIN 5.Replacement |
-| signature   |  String | Required    | User's hand signature phone, in base64|
+| signature_doc   |  String | Required    | User's hand signature phone, in base64|
 | address   |  String | Optional    | User's address |
 | phone   |  String | Optional    | User's phone |
 

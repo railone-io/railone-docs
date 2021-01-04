@@ -865,7 +865,7 @@ method：PUT
 |    card_no     | String |      必填    |银行卡ID          |
 | acct_no | String | 必填    |机构端用户编号(机构端唯一) |
 | request_type | int | 必填    | 1.冻结 2.解冻 3.挂失 4.重置密码 5.补卡|
-| signature   |  String | 必填    | 用户的签名照片，用base64格式|
+| signature_doc   |  String | 必填    | 用户的签名照片，用base64格式|
 | address   |  String | 选填    | 用户地址 |
 | phone   |  String | 选填    | 用户手机号 |
 

@@ -51,6 +51,7 @@
      * [7.5 Test push events](#Test-push-events)
      * [7.6 Query push failure events](#Query-push-failure-events)
      * [7.7 Update push failure events](#Update-push-failure-events)
+     * [7.8 Push Lock, Unlock, Lost, Renew PIN, Replacement card Status](#Push-Lock-Unlock-Lost-Renew-PIN-Replacement-card-Status)
 * [8.Error Codes](#error-codes)
      * [8.1 Business Logic Error Codes](#Business-Logic-Error-Codes)
      * [8.2 Identity Authentication Error Codes](#Identity-Authentication-Error-Codes)
@@ -881,7 +882,7 @@ method：GET
 | :------------: | :----: | :----------: |:---------- |
 |  acct_no  | String |     Required     | Institution account name (Unique within scope of the institution) |
 |  card_no  | String |     Required     |                           Bank card no.                           |
-| request_type | int | Required    | 1.Lock 2.Unlock 3.Lost 4.Renew PIN 5.Replacement |
+| request_type | int | Required    | 1.Lock 2.Unlock 3.Lost 4.Renew PIN 5.Replacement  |
 
 
 
@@ -1981,6 +1982,39 @@ method：PUT
   "code": 0,
   "msg": "string",
   "result": true
+}
+```
+
+
+### Push Lock, Unlock, Lost, Renew PIN, Replacement card Status
+
+
+| Parameter |  Type  |Description |
+| --- | --- |--- |
+| action|String  | card-status |
+| events[n].params.card_no |String | Bank card no.  |
+| events[n].params.status |int | 0.Pending 1.Successful 2.Failure |
+| events[n].request_type | int |  1.Lock 2.Unlock 3.Lost 4.Renew PIN 5.Replacement |
+
+Example：
+```
+{
+    "action": "card-lock-status",
+    "events": [
+        "{\"id\":\"bc76488ddda4\",\"create_time\":1585293811000,\"params\":{\"card_no\":\"123434234343\",\"request_type\":1,\"status\":1}}"
+    ]
+}
+
+
+events element convert string to json:
+{
+       "id": "bc76488ddda4",
+       "create_time": 1585293811000,
+       "params":{
+           "card_no": "123434234343",
+           "request_type": 1,
+           "status": 1
+       }
 }
 ```
 

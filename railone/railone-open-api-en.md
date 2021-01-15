@@ -2105,6 +2105,12 @@ events element convert string to json:
 |   1110037 |   KYC failure, user name error   |
 |   1110038 |   KYC failure, zipcode error   |
 |   1110039 |   KYC failure, other error   |
+|   1110040 |   KYC failure, your passport has expired or will expire in 6 month   |
+|   1110041 |   KYC failure, the passport is not clear or not complete   |
+|   1110042 |   KYC failure, gender filled error   |
+|   1110043 |   KYC failure, selfie photo is not clear or not complete   |
+|   1110044 |   KYC failure, the passport text in the selfie photo is reversed   |
+|   1110045 |   KYC failure, your face is not exposed in the selfie photo |
 
 KYC Failure reason filled in parameter ```reason```, the content for example:
 
@@ -2112,5 +2118,27 @@ KYC Failure reason filled in parameter ```reason```, the content for example:
 {
    "code": 1110032,
    "msg": "KYC failure, photo error"
+}
+```
+
+
+###  Card Activation Failure Error Codes
+
+| Status Code | Description           |
+| :--------------: | --------|
+|   1110060 |   Activation failure  |
+|   1110061 |   Activation failure, hand holding card is not plastic card   |
+|   1110062|   Activation failure, your face is not exposed in the selfie photo   |
+|   1110063 |   Activation failure, selfie photo is not clear or not complete   |
+|   1110064 |   Activation failure, did not cover the chip slot with your finger   |
+|   1110065 |   Activation failure, please take a color photo   |
+|   1110066 |   Activation failure, passport text in selfie photo not clear   |
+
+Card Activation Failure reason filled in parameter ```reason```, the content for example:
+
+```
+{
+   "code": 1110061,
+   "msg": "Activation failure, hand holding card is not plastic card"
 }
 ```

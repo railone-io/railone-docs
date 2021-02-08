@@ -787,7 +787,8 @@ method：GET
             {
                 "acct_no": "1",
                 "card_no": "4385211202597301",
-                "status": 1,
+                "status": 4,
+                "reason": "{\"code\":1110061,\"msg\":\"Activation failure, hand holding card is not plastic card\"}",
                 "create_time": 1576847136000
             }
         ]
@@ -801,6 +802,7 @@ method：GET
 |   acct_no   | String |     机构端用户编号(机构端唯一)      |
 |   card_no   |  int   |              银行卡号               |
 |   status    |  int   | 状态码: 0 冻结， 1 激活成功， 2未激活， 3. 激活待审核， 4. 激活审核失败,  5. 申请失败(卡片正在制作中，请过会再申请) |
+|   reason   | String | 激活失败原因。其他情况为空字符串 |
 | create_time |  long  |              创建时间               |
 
 
@@ -836,7 +838,8 @@ method：GET
             {
                 "acct_no": "1",
                 "card_no": "4385211202597301",
-                "status": 1,
+                "status": 4,
+                "reason": "{\"code\":1110061,\"msg\":\"Activation failure, hand holding card is not plastic card\"}",
                 "create_time": 1576847136000
             }
         ]
@@ -849,6 +852,7 @@ method：GET
 |   acct_no   | String |     机构端用户编号(机构端唯一)      |
 |   card_no   |  int   |              银行卡ID               |
 |   status    |  int   | 状态码: 0 冻结， 1 激活成功， 2未激活， 3. 激活待审核， 4. 激活审核失败, 5. 申请失败(卡片正在制作中，请过会再申请)|
+|   reason   | String | 激活失败原因。其他情况为空字符串 |
 | create_time |  long  |              创建时间               |
 
 

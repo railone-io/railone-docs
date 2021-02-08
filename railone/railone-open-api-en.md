@@ -606,7 +606,7 @@ method：GET
 |   acct_no   | String  |                         Institution account name (Unique within scope of the institution)                          |
 | card_type_id |String | Card type id|   
 |   status    |  int    | Status code : 0 - Submitted successfully, 1 - Verification successful (Account activated), 2 - Verification failed, 3 - Verifying, 4 - Submission in progress|
-| reason | String |      Reason for verification failure. Blank for status other than failure       |
+| reason | String |      Reason for verification failure.       |
 | create_time |  long   |                                                   Creation time                                                    |
 
 > KYC failure reason please see "KYC Failure Error Codes"
@@ -652,7 +652,7 @@ method：GET
 |   acct_no   | String  |                         Institution account name (Unique within scope of the institution)                          |
 | card_type_id |String  | Card type id|   
 |   status    |  int    | Status code : 0 - Submitted successfully, 1 - Verification successful (Account activated), 2 - Verification failed, 3 - Verifying, 4 - Submission in progress |
-| reason | String |      Reason for verification failure. Blank for status other than failure       |
+| reason | String |      Reason for verification failure.        |
 | create_time |  long   |                                                   Creation time                                                    |
 
 > KYC failure reason please see "KYC Failure Error Codes"
@@ -778,6 +778,7 @@ method：GET
         "acct_no": "1",
         "card_no": "4385211202597301",
         "status": 1,
+        "reason": "{\"code\":1110061,\"msg\":\"Activation failure, hand holding card is not plastic card\"}",
         "create_time": 1576847136000
       }
     ]
@@ -790,6 +791,7 @@ method：GET
 |   acct_no   | String |  Institution account name (Unique within scope of the institution)   |
 |   card_no   |  int   |                             Card ID                              |
 |   status    |  int   | Status code : 0 - Frozen, 1 - Activated successfully, 2 - Not active, 3 - Under review, 4 - Verification failed, 5 - Apply card failed, card is being made，please apply later |
+| reason | String |      Reason for activation failure.        |
 | create_time |  long  |                            Creation time                             |
 
 ### Query a specific user card activation status
@@ -823,6 +825,7 @@ method：GET
         "acct_no": "1",
         "card_no": "4385211202597301",
         "status": 1,
+        "reason": "{\"code\":1110061,\"msg\":\"Activation failure, hand holding card is not plastic card\"}",
         "create_time": 1576847136000
       }
     ]
@@ -835,6 +838,7 @@ method：GET
 |   acct_no   | String |  Institution account name (Unique within scope of the institution)   |
 |   card_no   |  int   |                             Card ID                              |
 |   status    |  int   | Status code : 0 - Frozen, 1 - Activated successfully, 2 - Not active, 3 - Under review, 4 - Verification failed, 5 - Apply card failed, card is being made，please apply later |
+| reason | String |      Reason for activation failure.        |
 | create_time |  long  |                            Creation time                             |
 
 

@@ -23,6 +23,7 @@
      - [3.5 查询指定用户所有卡片状态](#查询指定用户所有卡片状态)
      - [3.6 申请冻结、解冻、挂失、重置密码、补卡](#申请冻结-解冻-挂失-重置密码-补卡)
      - [3.7 查询冻结、解冻、挂失、重置密码、补卡状态](#查询冻结-解冻-挂失-重置密码-补卡状态)
+     - [3.8 查询快递单号](#查询快递单号)
 - [4.充值](#充值)
      - [4.1 用稳定币给用户卡充值](#用稳定币给用户卡充值)
          - [4.1.2 固定到账法币金额](#用稳定币给用户卡充值-指定到账法币金额-)
@@ -925,6 +926,53 @@ method：GET
 |   card_no   |  int   |              银行卡ID               |
 |   status    |  int   | 状态码: 0.处理中 1.成功 2.失败|
 | create_time |  long  |              创建时间               |
+
+
+### 查询快递单号
+
+
+```text
+url：/api/v1/debit-cards/trackingnumber?month_year={month_year}
+method：GET
+```
+
+- 请求
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+| month_year | String | 必填    | 包裹发送的月份，如："202106"|
+
+or 
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+|    card_no     | String |      必填    |银行卡ID          |
+| acct_no | String | 必填    |机构端用户编号(机构端唯一) |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": [{
+        "acct_no": "1",
+        "card_no": "4385211202597301",
+        "website": "https://www.fedex.com/fedextrack/",
+        "tracking_number": "773998038977",
+        "create_time": 1576847136000  
+  }]
+}
+```
+
+| Parameter  |  Type  |             Description             |
+| :--------: | :----: | :------------------------------ |
+|   acct_no   | String |     机构端用户编号(机构端唯一)      |
+|   card_no   |  int   |              银行卡ID               |
+|   website    |  String   | 快递公司网站|
+|   tracking_number    |  String   | 包裹的快递单号|
+| create_time |  long  |              创建时间               |
+
 
 ## 充值
 

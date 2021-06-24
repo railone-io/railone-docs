@@ -23,6 +23,7 @@
      * [3.5 Query a specific user card activation status](#Query-a-specific-user-card-activation-status)
      * [3.6 Request Lock, Unlock, Lost, Renew PIN, Replacement card](#Request-Lock-Unlock-Lost-Renew-PIN-Replacement-card)
      * [3.7 Query Lock, Unlock, Lost, Renew PIN, Replacement card Status](#Query-Lock-Unlock-Lost-Renew-PIN-Replacement-card-Status)
+     * [3.8 Query tracking number](#Query-tracking-number)
 * [4.Transactions](#transactions)
      * [4.1 User deposit with stablecoin](#User-deposit-with-stablecoin)
          * [4.2.2 Fixed amount will be received in fiat](#User-deposit-with-stablecoin-Fixed-amount-will-be-received-in-fiat)
@@ -910,6 +911,52 @@ method：GET
 |  acct_no  | String |    Institution account name (Unique within scope of the institution) |
 |  card_no  | String |    Bank card no.                           |
 |   status    |  int   | Status code :  0.Pending 1.Successful 2.Failure |
+| create_time |  long  |              create time               |
+
+
+
+### Query tracking number
+
+```text
+url：/api/v1/debit-cards/trackingnumber?month_year={month_year}
+method：GET
+```
+
+- Request
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+| month_year | String | Required    | The month of package send. for example："202106"|
+
+or 
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+|  acct_no  | String |     Required     | Institution account name (Unique within scope of the institution) |
+|  card_no  | String |     Required     |                           Bank card no.                           |
+
+- Response：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": [{
+        "acct_no": "1",
+        "card_no": "4385211202597301",
+        "website": "https://www.fedex.com/fedextrack/",
+        "tracking_number": "773998038977",
+        "create_time": 1576847136000  
+  }]
+}
+```
+
+| Parameter  |  Type  |             Description             |
+| :--------: | :----: | :------------------------------ |
+|   acct_no   | String |      Institution account name (Unique within scope of the institution)      |
+|   card_no   |  int   |              Bank card no.              |
+|   website    |  String   |  logistics company website |
+|   tracking_number    |  String   | tracking number of the package|
 | create_time |  long  |              create time               |
 
 ## Transactions

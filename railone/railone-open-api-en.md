@@ -67,17 +67,16 @@ Welcome to the Railone API documentation. This document is aimed at Railone ToB'
 
   | Card name |  Currency  |           distinguish            |
   | :--------: | :----: | :------------------------------ |
-  |    F,F-M*,F-V card(ID: 20000001 - 20000009)    |  USD,MYR   |  Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, user will receive an email if KYC successfully, you must click the link in the email before calling the activation interface. Recharge arrival time is within 4h  |
   |    J,J-M*,J-V card(ID: 30000001 - 30000009)     | USD | Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552. The name of the user will be printed on the card, and the card making time need 1-2 weeks. User must submit hold a card and passport photo when activation card. Recharge arrival time is within 4h |
   |   P,P-M*,P-V card(ID: 40000001 - 40000009)   | EUR       |         Within 48h after KYC audit, KYC fill only supports English, `mobile` format such as +8615821702552, `country` and `nationality` fill in the two-digit country code。Recharge arrival time is within 4h |
 
   |  Card name |  Card type  |           distinguish            |
   | :--------: | :----: | :------------------------------ |
-  |    F,J,P card    |  Plastic card  |  Plastic material, The card will be mailed to the user  |
-  |    F-MB,J-MB,P-MB card    |  Metal card  |  Metal material, Black color, The card will be mailed to the user   |
-  |    F-MS,J-MS,P-MS card    |  Metal card  |  Metal material, Silver color, The card will be mailed to the user   |
-  |    F-MG,J-MG,P-MG card    |  Metal card  |  Metal material, Golden color, The card will be mailed to the user   |
-  |    F-V,J-V,P-V card    |  Virtual card  |  Just get the card information through the API, user can consume online   |
+  |    J,P card    |  Plastic card  |  Plastic material, The card will be mailed to the user  |
+  |    J-MB,P-MB card    |  Metal Black card  |  Metal material, Black color, The card will be mailed to the user   |
+  |    J-MS,P-MS card    |  Metal Silver card  |  Metal material, Silver color, The card will be mailed to the user   |
+  |    J-MG,P-MG card    |  Metal Golden card  |  Metal material, Golden color, The card will be mailed to the user   |
+  |    J-V,P-V card    |  Virtual card  |  Just get the card information through the API, user can consume online   |
 
   
 API usage steps are as follows:

@@ -15,6 +15,7 @@
 	 - [2.2 提交用户KYC附件(可选)](#提交用户KYC附件-可选)
      - [2.3 查询所有用户 KYC 记录](#查询所有用户-KYC-记录)
      - [2.4 查询指定用户 KYC 记录](#查询指定用户-KYC-记录)
+     - [2.5 更新用户 KYC 信息](#更新用户-KYC-信息)
 - [3.开卡](#开卡)
      - [3.1 提交用户开卡申请](#提交用户开卡申请)
      - [3.2 提交激活卡需要的附件](#提交激活卡需要的附件)
@@ -518,7 +519,7 @@ method：POST
 |   zipcode | String |必填 |邮编，字符长度最大20|
 |   maiden_name | String |必填 |妈妈的名字，字符长度最大255|
 | card_type_id |String |必填 |银行卡种类对应的id,比如 10010001|
-|   kyc_info | text |选填 |KYC 其他信息|
+|   kyc_info | String |选填 |KYC 其他信息|
 | mail_verification_code | String |选填 |邮箱验证码|
 | mail_token | String |选填|发送邮件后返回的token|
 | cust_tx_id | String | 选填| KYC流水号|
@@ -662,6 +663,31 @@ method：GET
 
 
 > 失败原因请查看KYC失败错误码
+
+
+### 更新用户 KYC 信息
+
+```text
+url：/api/v1/customers/accounts
+method：PUT
+```
+
+- 请求：
+
+| Parameter  | Type |Requirement  | Description |
+| :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+|  kyc_info   | String  |    必填|kyc_info     |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": true
+}
+```
 
 
 ## 开卡

@@ -521,6 +521,7 @@ method：POST
 | mail_verification_code | String |     Optional     |                                    Email verification code                                    |
 |       mail_token       | String |     Optional     |                        Token returned upon sending verification Email                         |
 | cust_tx_id            | String | Optional         | customer transaction id|
+| sign_img | String | Optional| hand signature image. Base64 encoding. File size should be less than 1M |
 | poa_doc | String[3] |Optional |Picture or PDF of proof of address(Currently not supported). Base64 encoding. Each file size should be less than 2M|
 
 - Response:

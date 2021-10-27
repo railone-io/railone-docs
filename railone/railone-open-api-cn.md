@@ -523,6 +523,7 @@ method：POST
 | mail_verification_code | String |选填 |邮箱验证码|
 | mail_token | String |选填|发送邮件后返回的token|
 | cust_tx_id | String | 选填| KYC流水号|
+| sign_img | String | 选填| 签名照片。base64编码，照片文件大小应小于1M|
 | poa_doc | String[3] |选填 |地址证明照片（暂不支持）。base64编码，照片或PDF文件每个文件大小应小于2M|
 
 - 响应：

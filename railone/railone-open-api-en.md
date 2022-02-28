@@ -606,7 +606,7 @@ method：GET
 | :---------: | :----:   | :----------------------------------------------------------------------------------------------------------------: |
 |   acct_no   | String  |                         Institution account name (Unique within scope of the institution)                          |
 | card_type_id |String | Card type id|   
-|   status    |  int    | Status code : 0 - Submitted successfully, 1 - Verification successful (Account activated), 2 - Verification failed, 3 - Verifying, 4 - Submission in progress 6 - refund |
+|   status    |  int    | Status code : 0 - Submitted successfully, 1 - Verification successful (Account activated), 2 - Verification failed, 3 - Verifying, 4 - Submission in progress  6 - refund |
 | reason | String |      Reason for verification failure.       |
 | create_time |  long   |                                                   Creation time                                                    |
 
@@ -652,7 +652,7 @@ method：GET
 | :---------: | :----:   | :----------------------------------------------------------------------------------------------------------------: |
 |   acct_no   | String  |                         Institution account name (Unique within scope of the institution)                          |
 | card_type_id |String  | Card type id|   
-|   status    |  int    | Status code : 0 - Submitted successfully, 1 - Verification successful (Account activated), 2 - Verification failed, 3 - Verifying, 4 - Submission in progress |
+|   status    |  int    | Status code : 0 - Submitted successfully, 1 - Verification successful (Account activated), 2 - Verification failed, 3 - Verifying, 4 - Submission in progress  6 - refund |
 | reason | String |      Reason for verification failure.        |
 | create_time |  long   |                                                   Creation time                                                    |
 

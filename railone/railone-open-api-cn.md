@@ -16,6 +16,7 @@
      - [2.3 查询所有用户 KYC 记录](#查询所有用户-KYC-记录)
      - [2.4 查询指定用户 KYC 记录](#查询指定用户-KYC-记录)
      - [2.5 更新用户 KYC 信息](#更新用户-KYC-信息)
+     - [2.6 查询指定用户 KYC 信息](#查询指定用户-KYC-信息)
 - [3.开卡](#开卡)
      - [3.1 提交用户开卡申请](#提交用户开卡申请)
      - [3.2 提交激活卡需要的附件](#提交激活卡需要的附件)
@@ -690,6 +691,63 @@ method：PUT
 }
 ```
 
+### 查询指定用户 KYC 信息
+
+```text
+url：/api/v1/customers/accounts/kyc
+method：GET
+```
+
+- 请求：
+
+| Parameter  | Type |Requirement  | Description |
+| :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+
+- 响应：
+
+```
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "total": 1,
+    "records": [
+      {
+        "acct_no": "1222",
+        ......
+      }
+    ]
+  }
+}
+```
+
+| Parameter |  Type    |Description   |
+| :------------: | :----:  |:---------- |
+|   acct_no | String | 机构端用户编号(机构端唯一)，字符长度最大64位|
+|   acct_name | String  |机构端用户名，字符长度最大64位|
+|   first_name | String  |真实用户名，字符长度最大50位|
+|   last_name | String  |真实用户姓，字符长度最大50位|
+|   gender | String  |male:男，female:女，unknown:其他，字符长度最大6位|
+|   birthday | String  |生日（生日格式为"1990-01-01"）|
+|   city | String  |城市，字符长度最大100位|
+|   state | String  |省份，字符长度最大100位|
+|   country | String  |用户所在国家，字符长度最大50位|
+|   nationality | String  |国籍，字符长度最大255位|
+| doc_no | String  |证件号码，字符长度最大128位|
+| doc_type | String  |证件类型(目前只支持passport): passport: 护照，idcard：身份证，字符长度最大8位|
+| front_doc | String  |正面照。base64编码, 照片文件大小应小于2M|
+| back_doc | String  |反面照，doc_type是idcard时必须填写。base64编码，照片文件大小应小于2M|
+| mix_doc | String |手持证件照。base64编码，照片文件大小应小于2M|
+|   country_code | String |手机国际区号，如“+86”。字符长度最大5位|
+|   mobile | String  |手机号，字符长度最大32位|
+|  mail | String  |邮箱，不支持163.com的邮箱。字符长度最大64位|
+|   address | String  |通讯地址，银行卡会寄到该地址。字符长度最大256位|
+|   zipcode | String  |邮编，字符长度最大20位|
+|   maiden_name | String  |妈妈的名字，字符长度最大255位|
+| card_type_id |String  |银行卡种类对应的id,比如 10010001|
+|   kyc_info | text  |KYC 其他信息|
+| cust_tx_id | String | KYC流水号|
 
 ## 开卡
 

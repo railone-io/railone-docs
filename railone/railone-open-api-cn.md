@@ -736,9 +736,6 @@ method：GET
 |   nationality | String  |国籍，字符长度最大255位|
 | doc_no | String  |证件号码，字符长度最大128位|
 | doc_type | String  |证件类型(目前只支持passport): passport: 护照，idcard：身份证，字符长度最大8位|
-| front_doc | String  |正面照。base64编码, 照片文件大小应小于2M|
-| back_doc | String  |反面照，doc_type是idcard时必须填写。base64编码，照片文件大小应小于2M|
-| mix_doc | String |手持证件照。base64编码，照片文件大小应小于2M|
 |   country_code | String |手机国际区号，如“+86”。字符长度最大5位|
 |   mobile | String  |手机号，字符长度最大32位|
 |  mail | String  |邮箱，不支持163.com的邮箱。字符长度最大64位|

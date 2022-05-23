@@ -1103,6 +1103,7 @@ method：POST
 |    coin_type    | String | 必填|币种。只支持USDT、RUSD       |
 |   cust_tx_id    | String | 必填|机构的交易流水号           |
 |     remark     | String | 选填|交易备注                   |
+|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
 
 - 响应：
 
@@ -1160,6 +1161,7 @@ method：POST
 |    coin_type    | String | 必填|充值使用的币种。只支持USDT      |
 |   cust_tx_id    | String | 必填|机构的交易流水号           |
 |     remark     | String | 选填|交易备注                   |
+|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
 
 - 响应：
 
@@ -1198,7 +1200,7 @@ method：POST
 |     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
 
 
-### 用非稳定币给用户卡充值
+### 用非稳定币给用户卡充值(暂不支持)
 
  ETH 充值金额请大于或等于0.01，BTC 充值金额请大于或等于0.005。用非稳定币给用户卡充值，Railone 需要先去交易所按市场价兑换，```loading_fee``` 和 ```currency_amount``` 兑换后才能确定。
 
@@ -1248,7 +1250,7 @@ method：POST
 |     exchange_rate      | String | USDT/USD汇率  |
 |     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
 
-### 用非稳定币给用户卡充值(固定到账法币金额)
+### 用非稳定币给用户卡充值(固定到账法币金额,暂不支持)
 
 ```text
 url：/api/v1/deposit-transactions/crypto/fiat-amount
@@ -1569,6 +1571,7 @@ method：POST
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
 |     card_no     | String |必填| 银行卡ID |
+|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
 
 - 响应：
 

@@ -36,31 +36,34 @@
      - [4.4 查询某笔卡充值交易状态](#查询某笔卡充值交易状态)
      - [4.5 查询所有卡充值记录](#查询所有卡充值记录)
      - [4.6 查询指定用户所有卡充值记录](#查询指定用户所有卡充值记录)
-- [5.银行卡查询](#银行卡查询)
-     - [5.1 查询卡是否激活](#查询卡是否激活)
-     - [5.2 查询卡余额](#查询卡余额)
-     - [5.3 查询卡账单](#查询卡账单)
-     - [5.4 查询银行卡信息](#查询银行卡信息)
-     - [5.5 用户请求重置密码（暂不支持）](#用户请求重置密码-暂不支持-)
-- [6.验证码](#验证码)
-     - [6.1 发送邮箱验证码](#发送邮箱验证码)
-     - [6.2 校验邮箱验证码](#校验邮箱验证码)
-     - [6.3 发送手机验证码 (暂不支持)](#发送手机验证码-暂不支持-)
-     - [6.4 校验手机验证码(暂不支持)](#校验手机验证码-暂不支持-)
-- [7.事件推送](#事件推送)    
-     - [7.1 推送 KYC 事件](#推送-KYC-事件)
-     - [7.2 推送开卡事件](#推送开卡事件)
-     - [7.3 推送卡激活事件](#推送卡激活事件)
-     - [7.4 推送卡充值事件](#推送卡充值事件)
-     - [7.5 测试推送事件](#测试推送事件)
-     - [7.6 查询推送失败的事件](#查询推送失败的事件)
-     - [7.7 更新推送失败的事件](#更新推送失败的事件)
-     - [7.8 推送冻结、解冻、挂失、重置密码、补卡状态](#推送冻结-解冻-挂失-重置密码-补卡状态)
-- [8.错误码](#错误码)
-     - [8.1 业务逻辑错误码](#业务逻辑错误码)
-     - [8.2 身份权限认证错误码](#身份权限认证错误码)
-     - [8.3 异常错误码](#异常错误码)
-     - [8.4 KYC失败错误码](#KYC失败错误码)
+- [5.信用卡](#信用卡)
+     - [5.1 信用卡授信](#信用卡授信)
+     - [5.2 信用卡还款](#信用卡还款)
+- [6.银行卡查询](#银行卡查询)
+     - [6.1 查询卡是否激活](#查询卡是否激活)
+     - [6.2 查询卡余额](#查询卡余额)
+     - [6.3 查询卡账单](#查询卡账单)
+     - [6.4 查询银行卡信息](#查询银行卡信息)
+     - [6.5 用户请求重置密码（暂不支持）](#用户请求重置密码-暂不支持-)
+- [7.验证码](#验证码)
+     - [7.1 发送邮箱验证码](#发送邮箱验证码)
+     - [7.2 校验邮箱验证码](#校验邮箱验证码)
+     - [7.3 发送手机验证码 (暂不支持)](#发送手机验证码-暂不支持-)
+     - [7.4 校验手机验证码(暂不支持)](#校验手机验证码-暂不支持-)
+- [8.事件推送](#事件推送)    
+     - [8.1 推送 KYC 事件](#推送-KYC-事件)
+     - [8.2 推送开卡事件](#推送开卡事件)
+     - [8.3 推送卡激活事件](#推送卡激活事件)
+     - [8.4 推送卡充值事件](#推送卡充值事件)
+     - [8.5 测试推送事件](#测试推送事件)
+     - [8.6 查询推送失败的事件](#查询推送失败的事件)
+     - [8.7 更新推送失败的事件](#更新推送失败的事件)
+     - [8.8 推送冻结、解冻、挂失、重置密码、补卡状态](#推送冻结-解冻-挂失-重置密码-补卡状态)
+- [9.错误码](#错误码)
+     - [9.1 业务逻辑错误码](#业务逻辑错误码)
+     - [9.2 身份权限认证错误码](#身份权限认证错误码)
+     - [9.3 异常错误码](#异常错误码)
+     - [9.4 KYC失败错误码](#KYC失败错误码)
 
 ## Railone API
 
@@ -1529,6 +1532,125 @@ method：GET
 |  tx_status   | int |   交易状态。0、3、4:待处理中，1:充值成功，2充值失败，5:充值失败        |
 |   coin_price      | String | coin_type/USD汇率  |
 
+## 信用卡
+
+### 信用卡授信
+
+款没还清前不能更改授信。------------------------------
+
+```text
+url：/api/v1/limit-transactions/fiat-amount
+method：POST
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description                |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String | 必填|银行卡ID                   |
+|     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
+|     limit_amount      | String | 必填|授信法币金额         |
+|    coin_type    | String | 必填|充值使用的币种。只支持USDT      |
+|   cust_tx_id    | String | 必填|机构的交易流水号           |
+|     remark     | String | 选填|交易备注                   |
+|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "tx_id": "2020022511324811001637548",
+        "coin_type": "USDT",
+        "tx_amount": "0.92",          
+        "exchange_fee_rate": "0",
+        "exchange_fee": "0",
+        "loading_fee": "0.0812",        
+        "deposit_usdt": "101",
+        "currency_type": "USD",
+        "currency_amount": "100",
+        "exchange_rate": "1.00239251357",
+        "fiat_exchange_rate": "1"
+    }
+}
+```
+
+| Parameter |  Type    | Description |
+| :------------: | :----------: |:---------- |
+|     tx_id      | String | Railone 交易流水id  |
+|    coin_type    | String | 充值币种       |
+|    tx_amount      | String | 充值币种对应的金额         |
+|     deposit_usdt      | String | 扣除手续费后,为用户充值的USDT数量，单位是USDT   |
+|     exchange_fee_rate      | String | 充值币种兑换成USDT的费率   |
+|     exchange_fee      | String | 充值币种兑换成USDT的费用，单位是USDT  |
+|     loading_fee      | String | 充值手续费是0，单位是USDT   |
+|     currency_amount      | String | 到账法币数量  |
+|     currency_type      | String | 到账法币类型  |
+|     exchange_rate      | String | USDT/USD汇率  |
+|     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
+
+### 限额和可用余额查询
+
+### 限额设置记录
+
+### 信用卡还款
+
+```text
+url：/api/v1/repayment-transactions/fiat-amount
+method：POST
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description                |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String | 必填|银行卡ID                   |
+|     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
+|     repayment_amount      | String | 必填|还款法币金额         |
+|    coin_type    | String | 必填|充值使用的币种。只支持USDT      |
+|   cust_tx_id    | String | 必填|机构的交易流水号           |
+|     remark     | String | 选填|交易备注                   |
+|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "tx_id": "2020022511324811001637548",
+        "coin_type": "USDT",
+        "tx_amount": "0.92",          
+        "exchange_fee_rate": "0",
+        "exchange_fee": "0",
+        "loading_fee": "0.0812",        
+        "deposit_usdt": "101",
+        "currency_type": "USD",
+        "currency_amount": "100",
+        "exchange_rate": "1.00239251357",
+        "fiat_exchange_rate": "1"
+    }
+}
+```
+
+| Parameter |  Type    | Description |
+| :------------: | :----------: |:---------- |
+|     tx_id      | String | Railone 交易流水id  |
+|    coin_type    | String | 充值币种       |
+|    tx_amount      | String | 充值币种对应的金额         |
+|     deposit_usdt      | String | 扣除手续费后,为用户充值的USDT数量，单位是USDT   |
+|     exchange_fee_rate      | String | 充值币种兑换成USDT的费率   |
+|     exchange_fee      | String | 充值币种兑换成USDT的费用，单位是USDT  |
+|     loading_fee      | String | 充值手续费是0，单位是USDT   |
+|     currency_amount      | String | 到账法币数量  |
+|     currency_type      | String | 到账法币类型  |
+|     exchange_rate      | String | USDT/USD汇率  |
+|     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
+
+> 如果coin_type是USDT，从机构扣的USDT费用 = exchange_fee + repayment_fee + deposit_usdt。
 
 
 ## 银行卡查询

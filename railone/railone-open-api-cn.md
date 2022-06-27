@@ -38,7 +38,8 @@
      - [4.6 查询指定用户所有卡充值记录](#查询指定用户所有卡充值记录)
 - [5.信用卡](#信用卡)
      - [5.1 信用卡授信](#信用卡授信)
-     - [5.2 信用卡还款](#信用卡还款)
+     - [5.2 授信记录查询](#授信记录查询)
+     - [5.3 冻结解冻](#冻结解冻)
 - [6.银行卡查询](#银行卡查询)
      - [6.1 查询卡是否激活](#查询卡是否激活)
      - [6.2 查询卡余额](#查询卡余额)
@@ -1536,10 +1537,9 @@ method：GET
 
 ### 信用卡授信
 
-款没还清前不能更改授信。------------------------------
 
 ```text
-url：/api/v1/limit-transactions/fiat-amount
+url：/api/v1/credit/limit
 method：POST
 ```
 
@@ -1549,11 +1549,12 @@ method：POST
 | :------------: | :----: | :----------: |:---------- |
 |     card_no     | String | 必填|银行卡ID                   |
 |     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
-|     limit_amount      | String | 必填|授信法币金额         |
-|    coin_type    | String | 必填|充值使用的币种。只支持USDT      |
+|     available_amount      | String | 必填|当前可用金额         |
+|     amount_limit      | String | 必填|当前授信金额         |
+|     new_available_amount      | String | 必填|新的可用金额         |
+|    coin_type    | String | 必填|充值使用的币种。只支持RUSD      |
 |   cust_tx_id    | String | 必填|机构的交易流水号           |
 |     remark     | String | 选填|交易备注                   |
-|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
 
 - 响应：
 
@@ -1562,17 +1563,21 @@ method：POST
     "code": 0,
     "msg": "SUCCESS",
     "result": {
-        "tx_id": "2020022511324811001637548",
-        "coin_type": "USDT",
-        "tx_amount": "0.92",          
-        "exchange_fee_rate": "0",
-        "exchange_fee": "0",
-        "loading_fee": "0.0812",        
-        "deposit_usdt": "101",
-        "currency_type": "USD",
-        "currency_amount": "100",
-        "exchange_rate": "1.00239251357",
-        "fiat_exchange_rate": "1"
+      "tx_id":"2022062410453502002436064",
+      "cust_tx_id":"df6c7d60-b34c-4f7a-bdab-b9ed6560f748",
+      "acct_no":"0624002",
+      "card_no":"4355469889900027728",
+      "coin_type":"RUSD",
+      "currency_type":"USD",
+      "amount_limit": 8000, // 当前限额
+      "old_amount_limit":10000, // 旧限额
+      "tx_type": "02",  // 01 是增加备付金，02是扣减备付金
+      "tx_amount": 2000, // 变化的金额
+      "available_amount": 2000,    //参数
+      "old_available_amount": 4000,
+      "cust_credit_balance": 96000,
+      "old_cust_credit_balance": 100000,
+      "remark":"test"
     }
 }
 ```
@@ -1580,20 +1585,117 @@ method：POST
 | Parameter |  Type    | Description |
 | :------------: | :----------: |:---------- |
 |     tx_id      | String | Railone 交易流水id  |
+|     cust_tx_id      | String | 机构交易流水id  |
+|     acct_no     | String |机构端用户编号(机构端唯一) |
+|     card_no     | String |银行卡ID    |
 |    coin_type    | String | 充值币种       |
-|    tx_amount      | String | 充值币种对应的金额         |
-|     deposit_usdt      | String | 扣除手续费后,为用户充值的USDT数量，单位是USDT   |
-|     exchange_fee_rate      | String | 充值币种兑换成USDT的费率   |
-|     exchange_fee      | String | 充值币种兑换成USDT的费用，单位是USDT  |
-|     loading_fee      | String | 充值手续费是0，单位是USDT   |
-|     currency_amount      | String | 到账法币数量  |
-|     currency_type      | String | 到账法币类型  |
-|     exchange_rate      | String | USDT/USD汇率  |
-|     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
+|    currency_type    | String | 卡币种       |
+|    amount_limit      | String | 当前限额         |
+|    old_amount_limit      | String | 旧限额         |
+|    tx_type      | String | 交易类型。 01 是增加备付金，02 是扣减备付金        |
+|    tx_amount      | String | 变化的金额         |
+|     available_amount      | String | 可用金额  |
+|     old_available_amount      | String | 旧的可用金额  |
+|     cust_credit_balance      | String | 机构信用卡备付金余额  |
+|     old_cust_credit_balance      | String | 旧的 机构信用卡备付金余额   |
 
-### 限额和可用余额查询
+### 授信记录查询
 
-### 限额设置记录
+```text
+url：/api/v1/credit/limit?acct_no={acct_no}&card_no={card_no}
+method：GET
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+|     card_no     | String |必填|银行卡ID    |
+|  page_num   | int  |    选填|页数     |
+|  page_size  | int  |  选填|页的大小   |
+| former_time | long |  选填|前置时间, UNIX 时间戳，`秒为单位`   |
+| latter_time | long |  选填|后置时间, UNIX 时间戳，`秒为单位`   |
+| time_sort | String | 选填|时间排序, asc为正序，desc为反序   |
+
+
+- 响应：
+
+```json
+
+
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "total": 1,
+    "records": [
+      {
+        "tx_id":"2022062410453502002436064",
+        "cust_tx_id":"df6c7d60-b34c-4f7a-bdab-b9ed6560f748",
+        "acct_no":"0624002",
+        "card_no":"4355469889900027728",
+        "coin_type":"RUSD",
+        "currency_type":"USD",
+        "amount_limit": 8000, // 当前限额
+        "old_amount_limit":10000, // 旧限额
+        "tx_type": "02",  // 01 是增加备付金，02是扣减备付金
+        "tx_amount": 2000, // 变化的金额
+        "available_amount": 2000,    //参数
+        "old_available_amount": 4000,
+        "cust_credit_balance": 96000,
+        "old_cust_credit_balance": 100000,
+        "remark":"test"
+      }
+    ]
+  }
+}
+
+
+```
+
+| Parameter |  Type    | Description |
+| :------------: | :----------: |:---------- |
+|     tx_id      | String | Railone 交易流水id  |
+|     cust_tx_id      | String | 机构交易流水id  |
+|     acct_no     | String |机构端用户编号(机构端唯一) |
+|     card_no     | String |银行卡ID                   |
+|    coin_type    | String | 充值币种       |
+|    currency_type    | String | 卡币种       |
+|    amount_limit      | String | 当前限额         |
+|    old_amount_limit      | String | 旧限额         |
+|    tx_type      | String | 交易类型。 01 是增加备付金，02 是扣减备付金        |
+|    tx_amount      | String | 变化的金额         |
+|     available_amount      | String | 可用金额  |
+|     old_available_amount      | String | 旧的可用金额  |
+|     cust_credit_balance      | String | 机构信用卡备付金余额  |
+|     old_cust_credit_balance      | String | 旧的 机构信用卡备付金余额   |
+
+
+### 冻结解冻
+
+```
+url：/api/v1/credit/lock
+method：PUT
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|     lock      | int | 选填 | 0 或 1       |
+|   unlock   | int | 选填| 0 或 1         |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": true
+}
+```
+
 
 ### 信用卡还款
 

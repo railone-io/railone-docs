@@ -1718,64 +1718,6 @@ method：PUT
 ```
 
 
-### 信用卡还款
-
-```text
-url：/api/v1/repayment-transactions/fiat-amount
-method：POST
-```
-
-- 请求：
-
-| Parameter |  Type  | Requirement  |Description                |
-| :------------: | :----: | :----------: |:---------- |
-|     card_no     | String | 必填|银行卡ID                   |
-|     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
-|     repayment_amount      | String | 必填|还款法币金额         |
-|    coin_type    | String | 必填|充值使用的币种。只支持USDT      |
-|   cust_tx_id    | String | 必填|机构的交易流水号           |
-|     remark     | String | 选填|交易备注                   |
-|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
-
-- 响应：
-
-```json
-{
-    "code": 0,
-    "msg": "SUCCESS",
-    "result": {
-        "tx_id": "2020022511324811001637548",
-        "coin_type": "USDT",
-        "tx_amount": "0.92",          
-        "exchange_fee_rate": "0",
-        "exchange_fee": "0",
-        "loading_fee": "0.0812",        
-        "deposit_usdt": "101",
-        "currency_type": "USD",
-        "currency_amount": "100",
-        "exchange_rate": "1.00239251357",
-        "fiat_exchange_rate": "1"
-    }
-}
-```
-
-| Parameter |  Type    | Description |
-| :------------: | :----------: |:---------- |
-|     tx_id      | String | Railone 交易流水id  |
-|    coin_type    | String | 充值币种       |
-|    tx_amount      | String | 充值币种对应的金额         |
-|     deposit_usdt      | String | 扣除手续费后,为用户充值的USDT数量，单位是USDT   |
-|     exchange_fee_rate      | String | 充值币种兑换成USDT的费率   |
-|     exchange_fee      | String | 充值币种兑换成USDT的费用，单位是USDT  |
-|     loading_fee      | String | 充值手续费是0，单位是USDT   |
-|     currency_amount      | String | 到账法币数量  |
-|     currency_type      | String | 到账法币类型  |
-|     exchange_rate      | String | USDT/USD汇率  |
-|     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
-
-> 如果coin_type是USDT，从机构扣的USDT费用 = exchange_fee + repayment_fee + deposit_usdt。
-
-
 ## 银行卡查询
 
 提供银行卡消费记录等接口

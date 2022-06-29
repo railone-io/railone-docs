@@ -1572,9 +1572,9 @@ method：POST
       "currency_type":"USD",
       "amount_limit": 8000, // 当前限额
       "old_amount_limit":10000, // 旧限额
-      "tx_type": "02",  // 01 是增加备付金，02是扣减备付金
+      "tx_type": "02",  // 01 是增加授信，02是减少授信
       "tx_amount": 2000, // 变化的金额
-      "available_amount": 2000,    //参数
+      "available_amount": 2000,    
       "old_available_amount": 4000,
       "cust_credit_balance": 96000,
       "old_cust_credit_balance": 100000,
@@ -1593,7 +1593,7 @@ method：POST
 |    currency_type    | String | 卡币种       |
 |    amount_limit      | String | 当前限额         |
 |    old_amount_limit      | String | 旧限额         |
-|    tx_type      | String | 交易类型。 01 是增加备付金，02 是扣减备付金        |
+|    tx_type      | String | 交易类型。 01 是增加授信，02 是扣减授信        |
 |    tx_amount      | String | 变化的金额         |
 |     available_amount      | String | 可用金额  |
 |     old_available_amount      | String | 旧的可用金额  |
@@ -1640,9 +1640,9 @@ method：GET
         "currency_type":"USD",
         "amount_limit": 8000, // 当前限额
         "old_amount_limit":10000, // 旧限额
-        "tx_type": "02",  // 01 是增加备付金，02是扣减备付金
+        "tx_type": "02",  // 01 是增加授信，02是减少授信
         "tx_amount": 2000, // 变化的金额
-        "available_amount": 2000,    //参数
+        "available_amount": 2000,    
         "old_available_amount": 4000,
         "cust_credit_balance": 96000,
         "old_cust_credit_balance": 100000,
@@ -1665,7 +1665,7 @@ method：GET
 |    currency_type    | String | 卡币种       |
 |    amount_limit      | String | 当前限额         |
 |    old_amount_limit      | String | 旧限额         |
-|    tx_type      | String | 交易类型。 01 是增加备付金，02 是扣减备付金        |
+|    tx_type      | String | 交易类型。 01 是增加授信，02 是减少授信        |
 |    tx_amount      | String | 变化的金额         |
 |     available_amount      | String | 可用金额  |
 |     old_available_amount      | String | 旧的可用金额  |

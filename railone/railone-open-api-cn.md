@@ -39,8 +39,9 @@
 - [5.信用卡](#信用卡)
      - [5.1 信用卡授信](#信用卡授信)
      - [5.2 授信记录查询](#授信记录查询)
-     - [5.3 冻结](#冻结)
-     - [5.4 解冻](#解冻)
+     - [5.3 机构授信总额度查询](#机构授信总额度查询)
+     - [5.4 冻结](#冻结)
+     - [5.5 解冻](#解冻)
 - [6.银行卡查询](#银行卡查询)
      - [6.1 查询卡是否激活](#查询卡是否激活)
      - [6.2 查询卡余额](#查询卡余额)
@@ -1576,8 +1577,6 @@ method：POST
       "tx_amount": 2000, // 变化的金额
       "available_amount": 2000,    
       "old_available_amount": 4000,
-      "cust_credit_balance": 96000,
-      "old_cust_credit_balance": 100000,
       "remark":"test"
     }
 }
@@ -1597,8 +1596,6 @@ method：POST
 |    tx_amount      | String | 变化的金额         |
 |     available_amount      | String | 可用金额  |
 |     old_available_amount      | String | 旧的可用金额  |
-|     cust_credit_balance      | String | 机构信用卡备付金余额  |
-|     old_cust_credit_balance      | String | 旧的 机构信用卡备付金余额   |
 
 ### 授信记录查询
 
@@ -1644,8 +1641,6 @@ method：GET
         "tx_amount": 2000, // 变化的金额
         "available_amount": 2000,    
         "old_available_amount": 4000,
-        "cust_credit_balance": 96000,
-        "old_cust_credit_balance": 100000,
         "remark":"test"
       }
     ]
@@ -1669,8 +1664,43 @@ method：GET
 |    tx_amount      | String | 变化的金额         |
 |     available_amount      | String | 可用金额  |
 |     old_available_amount      | String | 旧的可用金额  |
-|     cust_credit_balance      | String | 机构信用卡备付金余额  |
-|     old_cust_credit_balance      | String | 旧的 机构信用卡备付金余额   |
+
+
+### 机构授信总额度查询
+
+```text
+url：/api/v1/credit/info
+method：GET
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+
+
+
+- 响应：
+
+```json
+
+
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "total_limit": 10000,
+    "total_available": 2000
+  }
+}
+
+
+```
+
+| Parameter |  Type    | Description |
+| :------------: | :----------: |:---------- |
+|     total_limit      | String | 总授信额度  |
+|     total_available      | String | 总的可用余额  |
 
 
 ### 冻结

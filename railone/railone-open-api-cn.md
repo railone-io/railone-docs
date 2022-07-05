@@ -1554,7 +1554,6 @@ method：POST
 |     available_amount      | String | 必填|当前可用金额         |
 |     amount_limit      | String | 必填|当前授信金额         |
 |     new_available_amount      | String | 必填|新的可用金额         |
-|    coin_type    | String | 必填|充值使用的币种。只支持RUSD      |
 |   cust_tx_id    | String | 必填|机构的交易流水号           |
 |     remark     | String | 选填|交易备注                   |
 

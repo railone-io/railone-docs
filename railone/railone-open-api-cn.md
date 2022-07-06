@@ -1571,12 +1571,12 @@ method：POST
       "card_no":"4355469889900027728",
       "coin_type":"RUSD",
       "currency_type":"USD",
-      "amount_limit": 8000, // 当前限额
-      "old_amount_limit":10000, // 旧限额
+      "amount_limit": "8000", // 当前限额
+      "old_amount_limit":"10000", // 旧限额
       "tx_type": "02",  // 01 是增加授信，02是减少授信
-      "tx_amount": 2000, // 变化的金额
-      "available_amount": 2000,    
-      "old_available_amount": 4000,
+      "tx_amount": "2000", // 变化的金额
+      "available_amount": "2000",    
+      "old_available_amount": "4000",
       "remark":"test"
     }
 }
@@ -1635,12 +1635,12 @@ method：GET
         "card_no":"4355469889900027728",
         "coin_type":"RUSD",
         "currency_type":"USD",
-        "amount_limit": 8000, // 当前限额
-        "old_amount_limit":10000, // 旧限额
+        "amount_limit": "8000", // 当前限额
+        "old_amount_limit":"10000", // 旧限额
         "tx_type": "02",  // 01 是增加授信，02是减少授信
-        "tx_amount": 2000, // 变化的金额
-        "available_amount": 2000,    
-        "old_available_amount": 4000,
+        "tx_amount": "2000", // 变化的金额
+        "available_amount": "2000",    
+        "old_available_amount": "4000",
         "remark":"test"
       }
     ]
@@ -1690,8 +1690,8 @@ method：GET
   "code": 0,
   "msg": "SUCCESS",
   "result": {
-    "amount_limit": 10000,
-    "available_amount": 2000
+    "amount_limit": "10000",
+    "available_amount": "2000"
   }
 }
 
@@ -1727,8 +1727,8 @@ method：GET
   "code": 0,
   "msg": "SUCCESS",
   "result": {
-    "total_limit": 10000,
-    "total_available": 2000
+    "total_limit": "10000",
+    "total_available": "2000"
   }
 }
 

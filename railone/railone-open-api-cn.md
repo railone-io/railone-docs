@@ -37,12 +37,14 @@
      - [4.5 查询所有卡充值记录](#查询所有卡充值记录)
      - [4.6 查询指定用户所有卡充值记录](#查询指定用户所有卡充值记录)
 - [5.信用卡](#信用卡)
-     - [5.1 信用卡授信](#信用卡授信)
+     - [5.1 授信](#信用卡授信)
      - [5.2 授信记录查询](#授信记录查询)
      - [5.3 用户授信额度查询](#用户授信额度查询)
-     - [5.4 机构授信总额度查询](#机构授信总额度查询)
-     - [5.5 冻结](#冻结)
-     - [5.6 解冻](#解冻)
+     - [5.4 还款](#还款)
+     - [5.5 还款记录查询](#还款记录查询)
+     - [5.6 机构授信总额度查询](#机构授信总额度查询)
+     - [5.7 冻结](#冻结)
+     - [5.8 解冻](#解冻)
 - [6.银行卡查询](#银行卡查询)
      - [6.1 查询卡是否激活](#查询卡是否激活)
      - [6.2 查询卡余额](#查询卡余额)
@@ -1539,7 +1541,7 @@ method：GET
 
 ## 信用卡
 
-### 信用卡授信
+### 授信
 
 
 ```text
@@ -1570,7 +1572,6 @@ method：POST
       "cust_tx_id":"df6c7d60-b34c-4f7a-bdab-b9ed6560f748",
       "acct_no":"0624002",
       "card_no":"4355469889900027728",
-      "coin_type":"RUSD",
       "currency_type":"USD",
       "amount_limit": "8000", // 当前限额
       "old_amount_limit":"10000", // 旧限额
@@ -1589,7 +1590,6 @@ method：POST
 |     cust_tx_id      | String | 机构交易流水id  |
 |     acct_no     | String |机构端用户编号(机构端唯一) |
 |     card_no     | String |银行卡ID    |
-|    coin_type    | String | 充值币种       |
 |    currency_type    | String | 卡币种       |
 |    amount_limit      | String | 当前限额         |
 |    old_amount_limit      | String | 旧限额         |
@@ -1634,7 +1634,6 @@ method：GET
         "cust_tx_id":"df6c7d60-b34c-4f7a-bdab-b9ed6560f748",
         "acct_no":"0624002",
         "card_no":"4355469889900027728",
-        "coin_type":"RUSD",
         "currency_type":"USD",
         "amount_limit": "8000", // 当前限额
         "old_amount_limit":"10000", // 旧限额
@@ -1657,7 +1656,6 @@ method：GET
 |     cust_tx_id      | String | 机构交易流水id  |
 |     acct_no     | String |机构端用户编号(机构端唯一) |
 |     card_no     | String |银行卡ID                   |
-|    coin_type    | String | 充值币种       |
 |    currency_type    | String | 卡币种       |
 |    amount_limit      | String | 当前限额         |
 |    old_amount_limit      | String | 旧限额         |
@@ -1703,6 +1701,121 @@ method：GET
 | :------------: | :----------: |:---------- |
 |     amount_limit      | String | 授信额度  |
 |     available_amount      | String | 可用金额  |
+
+
+### 还款
+
+
+```text
+url：/api/v1/credit/repayment
+method：POST
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description                |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String | 必填|银行卡ID                   |
+|     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
+|     available_amount      | String | 必填|当前可用金额         |
+|     repayment_amount      | String | 必填|还款金额         |
+|   cust_tx_id    | String | 必填|机构的交易流水号           |
+|     remark     | String | 选填|交易备注                   |
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+      "tx_id":"2022062410453502002436064",
+      "cust_tx_id":"df6c7d60-b34c-4f7a-bdab-b9ed6560f748",
+      "acct_no":"0624002",
+      "card_no":"4355469889900027728",
+      "currency_type":"USD",
+      "amount_limit": "10000", // 当前限额
+      "repayment_amount": "3000", // 还款金额
+      "available_amount": "11000",    
+      "old_available_amount": "8000",
+      "remark":"test"
+    }
+}
+```
+
+| Parameter |  Type    | Description |
+| :------------: | :----------: |:---------- |
+|     tx_id      | String | Railone 交易流水id  |
+|     cust_tx_id      | String | 机构交易流水id  |
+|     acct_no     | String |机构端用户编号(机构端唯一) |
+|     card_no     | String |银行卡ID    |
+|    currency_type    | String | 卡币种       |
+|    amount_limit      | String | 当前限额         |
+|    repayment_amount      | String | 还款金额         |
+|     available_amount      | String | 可用金额  |
+|     old_available_amount      | String | 旧的可用金额  |
+
+### 还款记录查询
+
+```text
+url：/api/v1/credit/repayment?acct_no={acct_no}&card_no={card_no}
+method：GET
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+|     card_no     | String |必填|银行卡ID    |
+|  page_num   | int  |    选填|页数     |
+|  page_size  | int  |  选填|页的大小   |
+| former_time | long |  选填|前置时间, UNIX 时间戳，`秒为单位`   |
+| latter_time | long |  选填|后置时间, UNIX 时间戳，`秒为单位`   |
+| time_sort | String | 选填|时间排序, asc为正序，desc为反序   |
+
+
+- 响应：
+
+```json
+
+
+{
+  "code": 0,
+  "msg": "SUCCESS",
+  "result": {
+    "total": 1,
+    "records": [
+      {
+        "tx_id":"2022062410453502002436064",
+        "cust_tx_id":"df6c7d60-b34c-4f7a-bdab-b9ed6560f748",
+        "acct_no":"0624002",
+        "card_no":"4355469889900027728",
+        "currency_type":"USD",
+        "amount_limit": "10000", // 当前限额
+        "repayment_amount": "3000", // 还款金额
+        "available_amount": "11000",
+        "old_available_amount": "8000",
+        "remark":"test"
+      }
+    ]
+  }
+}
+
+
+```
+
+| Parameter |  Type    | Description |
+| :------------: | :----------: |:---------- |
+|     tx_id      | String | Railone 交易流水id  |
+|     cust_tx_id      | String | 机构交易流水id  |
+|     acct_no     | String |机构端用户编号(机构端唯一) |
+|     card_no     | String |银行卡ID                   |
+|    currency_type    | String | 卡币种       |
+|    amount_limit      | String | 当前限额         |
+|    repayment_amount      | String | 还款金额         |
+|     available_amount      | String | 可用金额  |
+|     old_available_amount      | String | 旧的可用金额  |
 
 
 ### 机构授信总额度查询

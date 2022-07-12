@@ -2431,6 +2431,7 @@ events element convert string to json:
 | --- | --- |--- |
 | action |String |  creditcard-balance-updated |
 | events[n].params.tx_id |String | 交易ID |
+| events[n].params.card_no |String | 卡ID |
 | events[n].params.type   | int | 交易类型，1.消费  |
 
 示例：
@@ -2438,7 +2439,7 @@ events element convert string to json:
 {
     "action": "creditcard-balance-updated",
     "events": [
-        "{\"id\":\"bc76488ddda4\",\"create_time\":1585293811000,\"params\":{\"tx_id\":\"2020031609283339501898843\",\"type\":1}}"
+        "{\"id\":\"bc76488ddda4\",\"create_time\":1585293811000,\"params\":{\"card_no\": \"78833000000198766\",\"tx_id\":\"2020031609283339501898843\",\"type\":1}}"
     ]
 }
 
@@ -2448,6 +2449,7 @@ events element convert string to json:
        "create_time": 1585293811000,
        "params":{
            "tx_id": "2020031609283339501898843",
+           "card_no": "78833000000198766",
            "type": 1
        }
 }

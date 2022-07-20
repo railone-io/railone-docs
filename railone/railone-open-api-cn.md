@@ -1690,7 +1690,8 @@ method：GET
   "msg": "SUCCESS",
   "result": {
     "amount_limit": "10000",
-    "available_amount": "2000"
+    "available_amount": "1900",
+    "pre_authorize_amount": "100"
   }
 }
 
@@ -1701,6 +1702,7 @@ method：GET
 | :------------: | :----------: |:---------- |
 |     amount_limit      | String | 授信额度  |
 |     available_amount      | String | 可用金额  |
+|     pre_authorize_amount      | String | 预授权金额  |
 
 
 ### 还款

@@ -1983,6 +1983,7 @@ method：POST
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
 |     card_no     | String | 必填|银行卡ID |
+|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
 |     former_month_year     | String | 必填|指定查询的月份(格式“012020”) |
 |     latter_month_year     | String | 必填|指定查询的月份(格式“012020”) |
 

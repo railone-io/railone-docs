@@ -1868,6 +1868,8 @@ method：PUT
 
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+|     card_no     | String |必填|银行卡ID    |
 
 - 响应：
 
@@ -1890,6 +1892,8 @@ method：PUT
 
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+|     card_no     | String |必填|银行卡ID    |
 
 - 响应：
 

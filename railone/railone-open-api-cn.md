@@ -27,7 +27,7 @@
      - [3.7 查询冻结、解冻、挂失、重置密码、补卡状态](#查询冻结-解冻-挂失-重置密码-补卡状态)
      - [3.8 查询快递单号](#查询快递单号)
      - [3.9 升级双币种卡](#升级双币种卡)
-- [4.充值](#充值)
+- [4.充值和兑换](#充值和兑换)
      - [4.1 用稳定币给用户卡充值](#用稳定币给用户卡充值)
          - [4.1.2 固定到账法币金额](#用稳定币给用户卡充值-指定到账法币金额-)
      - [4.2 用非稳定币给用户卡充值](#用非稳定币给用户卡充值)
@@ -36,6 +36,8 @@
      - [4.4 查询某笔卡充值交易状态](#查询某笔卡充值交易状态)
      - [4.5 查询所有卡充值记录](#查询所有卡充值记录)
      - [4.6 查询指定用户所有卡充值记录](#查询指定用户所有卡充值记录)
+     - [4.7 兑换USDT](#兑换USDT)  
+     - [4.8 查用户兑换记录](#查用户兑换记录)
 - [5.信用卡](#信用卡)
      - [5.1 授信](#信用卡授信)
      - [5.2 授信记录查询](#授信记录查询)
@@ -1538,6 +1540,131 @@ method：GET
 |   fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
 |  tx_status   | int |   交易状态。0、3、4:待处理中，1:充值成功，2充值失败，5:充值失败        |
 |   coin_price      | String | coin_type/USD汇率  |
+
+
+### 兑换USDT
+
+```text
+url：/api/v1/exchange-transactions
+method：POST
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description                |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String | 必填|银行卡ID                   |
+|     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
+|     currency_amount      | String | 必填|充值对应币种的金额         |
+|    coin_type    | String | 必填|币种。只支持USDT       |
+|   cust_tx_id    | String | 必填|机构的交易流水号           |
+|     remark     | String | 选填|交易备注                   |
+|   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "cust_tx_id": "1223",
+        "acct_no": "03030062",
+        "card_no": "8993152800000013334",
+        "cust_tx_time": 1584350913000,
+        "tx_id": "2020031609283339501898843",
+        "coin_type": "USDT",
+        "tx_amount": "59.4",
+        "exchange_fee": "0",
+        "currency_type": "USD",
+        "currency_amount": "60",
+        "exchange_rate": "1",
+        "tx_status": 3
+    }
+}
+```
+
+| Parameter |  Type    | Description |
+| :------------: | :----------: |:---------- |
+|  cust_tx_id   | String |         机构流水号         |
+|    acct_no    | String | 机构端用户编号(机构端唯一) |
+|    card_no    |  int   |          银行卡ID         |
+|  cust_tx_time  |  long  |          创建时间          |
+|  tx_id   | String |        交易id         |
+|    coin_type    |  int   |          充值币种          |
+|   coin_amount   | String |          充值金额          |
+|  exchange_fee   | String |     充值币种兑换成USDT的费用，单位是 ```coin_type```    |
+|     currency_type      | String | 到账法币类型  |
+|     currency_amount      | String | 到账法币数量  |
+| exchange_rate | String |            USDT/USD汇率            |
+|  tx_status   | int |   交易状态。0:待处理中，1:兑换成功，2充值失败        |
+| reason | String |           原因         |
+
+### 查用户兑换记录
+
+```text
+url：/api/v1/exchange-transactions?acct_no={acct_no}
+method：GET
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+|     tx_id      | String | 必填|Railone 交易流水 tx_id 或 cust_tx_id  |
+|  page_num   | int  |    选填|页数     |
+|  page_size  | int  |  选填|页的大小   |
+| former_time | long |  选填|前置时间, UNIX 时间戳，`秒为单位`   |
+| latter_time | long |  选填|后置时间, UNIX 时间戳，`秒为单位`   |
+| time_sort | String | 选填|时间排序, asc为正序，desc为反序   |
+
+
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "total": 1,
+        "records": [
+            {
+                "cust_tx_id": "1223",
+                "acct_no": "03030062",
+                "card_no": "8993152800000013334",
+                "cust_tx_time": 1584350913000,
+                "tx_id": "2020031609283339501898843",
+                "coin_type": "USDT",
+                "tx_amount": "59.4",     
+                "exchange_fee": "0",
+                "currency_type": "USD",                
+                "currency_amount": "60",
+                "exchange_rate": "1",
+                "tx_status": 3,
+                "reason": ""
+            }
+        ]
+    }
+}
+```
+
+|  Parameter   |  Type  |        Description         |
+| :--------: | :----: | :------------------------------ |
+|  cust_tx_id   | String |         机构流水号         |
+|    acct_no    | String | 机构端用户编号(机构端唯一) |
+|    card_no    |  int   |          银行卡ID         |
+|  cust_tx_time  |  long  |          创建时间          |
+|  tx_id   | String |        交易id         |
+|    coin_type    |  int   |          充值币种          |
+|   coin_amount   | String |          充值金额          |
+|  exchange_fee   | String |     充值币种兑换成USDT的费用，单位是 ```coin_type```    |
+|     currency_type      | String | 到账法币类型  |
+|     currency_amount      | String | 到账法币数量  |
+| exchange_rate | String |            USDT/USD汇率            |
+|  tx_status   | int |   交易状态。0:待处理中，1:兑换成功，2充值失败        |
+| reason | String |           原因         |
 
 ## 信用卡
 

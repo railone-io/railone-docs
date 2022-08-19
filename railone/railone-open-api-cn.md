@@ -1738,6 +1738,7 @@ method：GET
 | :------------: | :----: | :----------: |:---------- |
 |    acct_no     | String | 必填|机构用户的唯一id号 |
 |     card_no     | String |必填|银行卡ID    |
+|     cust_tx_id      | String |  选填| 机构交易流水id  |
 |  page_num   | int  |    选填|页数     |
 |  page_size  | int  |  选填|页的大小   |
 | former_time | long |  选填|前置时间, UNIX 时间戳，`秒为单位`   |
@@ -1897,6 +1898,7 @@ method：GET
 | :------------: | :----: | :----------: |:---------- |
 |    acct_no     | String | 必填|机构用户的唯一id号 |
 |     card_no     | String |必填|银行卡ID    |
+|     cust_tx_id      | String |  选填| 机构交易流水id  |
 |  page_num   | int  |    选填|页数     |
 |  page_size  | int  |  选填|页的大小   |
 | former_time | long |  选填|前置时间, UNIX 时间戳，`秒为单位`   |

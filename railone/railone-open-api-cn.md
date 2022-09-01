@@ -2056,7 +2056,10 @@ method：POST
 {
   "code": 0,
   "msg": "string",
-  "result": true
+  "result": {
+  	"old_balance": "500",
+	"balance": "1000",
+  }
 }
 ```
 

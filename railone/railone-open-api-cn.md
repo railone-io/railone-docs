@@ -47,6 +47,8 @@
      - [5.6 机构授信总额度查询](#机构授信总额度查询)
      - [5.7 冻结](#冻结)
      - [5.8 解冻](#解冻)
+     - [5.9 给卡种共享账户充值](#给卡种共享账户充值)
+     - [5.10 查询卡种共享账户余额](#查询卡种共享账户余额)
 - [6.银行卡查询](#银行卡查询)
      - [6.1 查询卡是否激活](#查询卡是否激活)
      - [6.2 查询卡余额](#查询卡余额)
@@ -2034,6 +2036,54 @@ method：PUT
 }
 ```
 
+### 给卡种共享账户充值
+
+```
+url：/api/v1/credit/shareaccount/deposit
+method：POST
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    card_type_id     | String | 必填| 卡种id，如 60000004 |
+|     amount     | String |必填|金额，单位是usdt    |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": true
+}
+```
+
+### 查卡种共享账户余额
+
+```
+url：/api/v1/credit/shareaccount/balance
+method：GET
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    card_type_id     | String | 必填| 信用卡卡种id，如 60000004 |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": {
+  	"balance": "1000"
+  }
+}
+```
 
 ## 银行卡查询
 

@@ -1962,7 +1962,7 @@ method：GET
 
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
-
+|    card_type_id     | String | 必填| 卡种id，如 60000004 |
 
 
 - 响应：

@@ -1557,8 +1557,8 @@ method：POST
 | :------------: | :----: | :----------: |:---------- |
 |     card_no     | String | 必填|银行卡ID                   |
 |     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
-|     currency_amount      | String | 必填|充值对应币种的金额         |
-|    coin_type    | String | 必填|币种。只支持USDT       |
+|     currency_amount      | String | 必填|法币金额         |
+|    coin_type    | String | 必填|购买币种。只支持USDT       |
 |   cust_tx_id    | String | 必填|机构的交易流水号           |
 |     remark     | String | 选填|交易备注                   |
 |   card_currency | String | 选填|卡币种，双币种卡才需要填写     |
@@ -1593,11 +1593,11 @@ method：POST
 |    card_no    |  int   |          银行卡ID         |
 |  cust_tx_time  |  long  |          创建时间          |
 |  tx_id   | String |        交易id         |
-|    coin_type    |  int   |          充值币种          |
-|   coin_amount   | String |          充值金额          |
+|    coin_type    |  int   |          购买币种          |
+|   coin_amount   | String |          收到的金额          |
 |  exchange_fee   | String |     充值币种兑换成USDT的费用，单位是 ```coin_type```    |
-|     currency_type      | String | 到账法币类型  |
-|     currency_amount      | String | 到账法币数量  |
+|     currency_type      | String | 法币类型  |
+|     currency_amount      | String | 法币金额  |
 | exchange_rate | String |            USDT/USD汇率            |
 |  tx_status   | int |   交易状态。0:待处理中，1:兑换成功，2充值失败        |
 | reason | String |           原因         |
@@ -1659,11 +1659,11 @@ method：GET
 |    card_no    |  int   |          银行卡ID         |
 |  cust_tx_time  |  long  |          创建时间          |
 |  tx_id   | String |        交易id         |
-|    coin_type    |  int   |          充值币种          |
-|   coin_amount   | String |          充值金额          |
+|    coin_type    |  int   |          购买币种          |
+|   coin_amount   | String |          兑换到的金额          |
 |  exchange_fee   | String |     充值币种兑换成USDT的费用，单位是 ```coin_type```    |
-|     currency_type      | String | 到账法币类型  |
-|     currency_amount      | String | 到账法币数量  |
+|     currency_type      | String | 法币类型  |
+|     currency_amount      | String | 法币数量  |
 | exchange_rate | String |            USDT/USD汇率            |
 |  tx_status   | int |   交易状态。0:待处理中，1:兑换成功，2充值失败        |
 | reason | String |           原因         |

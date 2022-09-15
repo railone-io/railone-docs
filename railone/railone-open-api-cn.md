@@ -1581,7 +1581,7 @@ method：POST
         "currency_type": "USD",
         "currency_amount": "60",
         "exchange_rate": "1",
-        "tx_status": 3
+        "tx_status": 1
     }
 }
 ```
@@ -1644,7 +1644,7 @@ method：GET
                 "currency_type": "USD",                
                 "currency_amount": "60",
                 "exchange_rate": "1",
-                "tx_status": 3,
+                "tx_status": 1,
                 "reason": ""
             }
         ]

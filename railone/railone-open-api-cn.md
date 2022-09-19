@@ -1558,7 +1558,6 @@ method：POST
 |     card_no     | String | 必填|银行卡ID                   |
 |     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
 |     currency_amount      | String | 必填|法币金额         |
-|    coin_type    | String | 必填|购买币种。只支持USDT       |
 |   cust_tx_id    | String | 必填|机构的交易流水号           |
 |     remark     | String | 选填|交易备注                   |
 |   card_currency | String | 选填|卡币种，双币种卡才需要填写     |

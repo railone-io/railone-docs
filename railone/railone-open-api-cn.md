@@ -1589,7 +1589,7 @@ method：POST
 | :------------: | :----------: |:---------- |
 |  cust_tx_id   | String |         机构流水号         |
 |    acct_no    | String | 机构端用户编号(机构端唯一) |
-|    card_no    |  int   |          银行卡ID         |
+|    card_no    |  String   |          银行卡ID         |
 |  cust_tx_time  |  long  |          创建时间          |
 |  tx_id   | String |        交易id         |
 |    coin_type    |  int   |          购买币种          |
@@ -1604,7 +1604,7 @@ method：POST
 ### 查用户兑换记录
 
 ```text
-url：/api/v1/exchange-transactions?acct_no={acct_no}
+url：/api/v1/exchange-transactions?acct_no={acct_no}&card_no={card_no}
 method：GET
 ```
 
@@ -1613,6 +1613,7 @@ method：GET
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
 |    acct_no     | String | 必填|机构用户的唯一id号 |
+|     card_no     | String | 必填|银行卡ID                   |
 |     tx_id      | String | 必填|Railone 交易流水 tx_id 或 cust_tx_id  |
 |  page_num   | int  |    选填|页数     |
 |  page_size  | int  |  选填|页的大小   |
@@ -1655,7 +1656,7 @@ method：GET
 | :--------: | :----: | :------------------------------ |
 |  cust_tx_id   | String |         机构流水号         |
 |    acct_no    | String | 机构端用户编号(机构端唯一) |
-|    card_no    |  int   |          银行卡ID         |
+|    card_no    |  String   |          银行卡ID         |
 |  cust_tx_time  |  long  |          创建时间          |
 |  tx_id   | String |        交易id         |
 |    coin_type    |  int   |          购买币种          |

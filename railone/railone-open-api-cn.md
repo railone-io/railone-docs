@@ -2199,6 +2199,7 @@ method：POST
                   "debit_usd": "2.50",
                   "credit": "",
                   "credit_usd": "",
+                  "fee": "0",
                   "type": 1
               },
               {
@@ -2210,6 +2211,7 @@ method：POST
                   "debit_usd": "2.50",
                   "credit": "",
                   "credit_usd": "",
+                  "fee": "0",
                   "type": 1
               }
           ]
@@ -2237,6 +2239,7 @@ method：POST
 |   bank_tx_list[0].debit_usd   | String | 消费金额(USD)  |
 |   bank_tx_list[0].credit   | String | 存入金额(卡支持的货币)   |
 |   bank_tx_list[0].credit_usd   | String | 存入金额(USD)  |
+|   bank_tx_list[0].fee   | String | 手续费，只有部分卡有值。  |
 |   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出) 6.其他 7.结算调整 |
 |   bank_tx_list[0].tx_currency   | String | 实际交易货币  |
 |   bank_tx_list[0].tx_amount   | String | 实际交易货币的交易金额  |

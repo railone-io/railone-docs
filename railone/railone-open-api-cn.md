@@ -86,13 +86,6 @@
 |    J卡、J-M*、J-V卡（ID：30000001 - 30000009）     | USD | KYC审核48h以内，KYC填写只支持英文，mobile格式如 +8615821702552，卡片上会印用户的姓名，制卡时间1-2周。激活时必须提交手持卡片和护照的自拍照。到账时间4h内。 |
 |   P卡、P-M*、P-V卡（ID：40000001 - 40000009）   | EUR       |         KYC时间1h以内，KYC填写只支持英文， mobile格式如 +86-15821702552，country、nationality填两位国家码。到账时间1h内。 |
 
-| 卡名 |  卡类型  |           区别            |
-| :--------: | :----: | :------------------------------ |
-|    J、P卡    |  塑料卡  |  塑料材质，卡片会邮寄给用户  |
-|    J-MB、P-MB卡    |  金属黑卡  |  金属材质，黑色，卡片会邮寄给用户   |
-|    J-MS、P-MS卡    |  金属银卡  |  金属材质，银色，卡片会邮寄给用户   |
-|    J-MG、P-MG卡    |  金属金卡  |  金属材质，金色，卡片会邮寄给用户   |
-|    J-V、P-V卡    |  虚拟卡  |  只需通过接口获取卡片信息，可以网上消费   |
 
 API 使用步骤：
 
@@ -2241,7 +2234,7 @@ method：POST
 |   bank_tx_list[0].credit   | String | 存入金额(卡支持的货币)   |
 |   bank_tx_list[0].credit_usd   | String | 存入金额(USD)  |
 |   bank_tx_list[0].fee   | String | 手续费，只有部分卡有值。  |
-|   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出) 6.其他 7.结算调整 |
+|   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出) 6.其他 7.结算调整 8.退款 |
 |   bank_tx_list[0].tx_currency   | String | 实际交易货币  |
 |   bank_tx_list[0].tx_amount   | String | 实际交易货币的交易金额  |
 
@@ -2625,7 +2618,6 @@ events element convert string to json:
 | action |String |  creditcard-balance-updated |
 | events[n].params.tx_id |String | 交易ID |
 | events[n].params.card_no |String | 卡ID |
-| events[n].params.type   | int | 交易类型，1.消费  |
 
 示例：
 ```
@@ -2642,8 +2634,7 @@ events element convert string to json:
        "create_time": 1585293811000,
        "params":{
            "tx_id": "2020031609283339501898843",
-           "card_no": "78833000000198766",
-           "type": 1
+           "card_no": "78833000000198766"
        }
 }
 ```

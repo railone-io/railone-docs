@@ -1551,7 +1551,7 @@ method：POST
 |      bank_tx_list[0].debit_usd       | String | Debit amount(USD)                                                       |
 |      bank_tx_list[0].credit      | String | Credit amount(card currency)                                                      |
 |      bank_tx_list[0].credit_usd      | String | Credit amount(USD)                                                      |
-|       bank_tx_list[0].type       |  int   | Transaction type, 1. Debit, 2. Deposit, 3. Withdrawal, 4. Transfer in, 5. Transfer out, 6. other  7. Settlement Adjustment  |
+|       bank_tx_list[0].type       |  int   | Transaction type, 1. Debit, 2. Deposit, 3. Withdrawal, 4. Transfer in, 5. Transfer out, 6. other  7. Settlement Adjustment  8. refund |
 |   bank_tx_list[0].tx_currency   | String | Actual transaction currency  |
 |   bank_tx_list[0].tx_amount   | String | Transaction amount of actual transaction currency  |
 

@@ -27,6 +27,7 @@
      - [3.7 查询冻结、解冻、挂失、重置密码、补卡状态](#查询冻结-解冻-挂失-重置密码-补卡状态)
      - [3.8 查询快递单号](#查询快递单号)
      - [3.9 升级双币种卡](#升级双币种卡)
+     - [3.10 再次发送包含PIN码的邮件](#再次发送包含PIN码的邮件)
 - [4.充值和兑换](#充值和兑换)
      - [4.1 用稳定币给用户卡充值](#用稳定币给用户卡充值)
          - [4.1.2 固定到账法币金额](#用稳定币给用户卡充值-指定到账法币金额-)
@@ -55,6 +56,7 @@
      - [6.3 查询卡账单](#查询卡账单)
      - [6.4 查询银行卡信息](#查询银行卡信息)
      - [6.5 用户请求重置密码（暂不支持）](#用户请求重置密码-暂不支持-)
+     - [6.6 查询卡已授权交易](#查询卡已授权交易)
 - [7.验证码](#验证码)
      - [7.1 发送邮箱验证码](#发送邮箱验证码)
      - [7.2 校验邮箱验证码](#校验邮箱验证码)
@@ -1069,6 +1071,32 @@ or
 
 ```text
 url：/api/v1/debit-cards/upgrade
+method：POST
+```
+
+- 请求
+
+| Parameter |  Type  |   Requirement  |     Description         |
+| :------------: | :----: | :----------: |:---------- |
+|    card_no     | String |      必填    |银行卡ID          |
+| acct_no | String | 必填    |机构端用户编号(机构端唯一) |
+
+
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": true
+}
+```
+
+### 再次发送包含PIN码的邮件
+
+```text
+url：/api/v1/debit-cards/resendemail
 method：POST
 ```
 
@@ -2323,6 +2351,68 @@ method：POST
 }
 ```
 
+### 查询卡已授权交易
+
+```text
+url：/api/v1/bank/authorizedtransaction
+method：GET
+```
+
+注意只有部分卡，PT和PH卡能查到已预授权的交易
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String | 必填|银行卡ID |
+
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": [
+              {
+                  "transaction_date": "20/11/2019",
+                  "posting_date": "20/11/2019",
+                  "tx_id": "54675678678",                  
+                  "description": "MONTHLY FEE",
+                  "debit": "2.50",
+                  "debit_usd": "2.50",
+                  "credit": "",
+                  "credit_usd": "",
+                  "fee": "0"
+              },
+              {
+                  "transaction_date": "28/11/2019",
+                  "posting_date": "28/11/2019",
+                  "tx_id": "54675678677",
+                  "description": "MONTHLY FEE",
+                  "debit": "2.50",
+                  "debit_usd": "2.50",
+                  "credit": "",
+                  "credit_usd": "",
+                  "fee": "0"
+              }
+    ]
+ }   
+```
+
+| Parameter |  Type  |          Description          |
+| :--------: | :----: | :------------------------------ |
+|   transaction_date   | String | 交易日期  |
+|   posting_date   | String | 交易提交日期  |
+|   tx_id   | String | 交易ID |
+|   description   | String | 描述  |
+|   debit   | String | 消费金额(卡支持的货币)  |
+|   debit_usd   | String | 消费金额(USD)  |
+|   credit   | String | 存入金额(卡支持的货币)   |
+|   credit_usd   | String | 存入金额(USD)  |
+|   fee   | String | 手续费，只有部分卡有值。  |
+|   tx_currency   | String | 实际交易货币  |
+|   tx_amount   | String | 实际交易货币的交易金额  |
 
 ## 验证码
 

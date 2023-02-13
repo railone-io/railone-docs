@@ -2224,6 +2224,7 @@ method：POST
                   "credit": "",
                   "credit_usd": "",
                   "fee": "0",
+                  "origin_transaction_id": "",
                   "type": 1
               },
               {
@@ -2236,6 +2237,7 @@ method：POST
                   "credit": "",
                   "credit_usd": "",
                   "fee": "0",
+                  "origin_transaction_id": "",
                   "type": 1
               }
           ]
@@ -2267,6 +2269,7 @@ method：POST
 |   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出) 6.其他 7.结算调整 8.退款 |
 |   bank_tx_list[0].tx_currency   | String | 实际交易货币  |
 |   bank_tx_list[0].tx_amount   | String | 实际交易货币的交易金额  |
+|   bank_tx_list[0].origin_transaction_id | String | 原消费交易id，退款交易才可能有值  |
 
 ### 查询银行卡信息
 

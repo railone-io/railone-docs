@@ -57,6 +57,8 @@
      - [6.4 查询银行卡信息](#查询银行卡信息)
      - [6.5 用户请求重置密码（暂不支持）](#用户请求重置密码-暂不支持-)
      - [6.6 查询卡已授权交易](#查询卡已授权交易)
+     - [6.7 卡限额修改](#卡限额修改)
+     - [6.8 查询卡限额](#查询卡限额)
 - [7.验证码](#验证码)
      - [7.1 发送邮箱验证码](#发送邮箱验证码)
      - [7.2 校验邮箱验证码](#校验邮箱验证码)
@@ -2417,7 +2419,91 @@ method：GET
 |   tx_currency   | String | 实际交易货币  |
 |   tx_amount   | String | 实际交易货币的交易金额  |
 
-## 验证码
+
+
+### 卡限额修改
+
+```text
+url：/api/v1/bank/cardlimit
+method：POST
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String |必填| 银行卡ID |
+|   max_amount_singletx   | String |      当笔限额          |
+|   max_amount_daily   | String |      日限额           |
+|   max_amount_monthly   | String |   月限额           |
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "card_no": "438521******2001",
+        "card_type": "60000001",
+        "max_amount_singletx": "1000",
+        "max_amount_daily": "2000",
+        "max_amount_monthly": "100000",
+        "available_balance": "100",
+    }
+}
+```
+
+| Parameter |  Type  |          Description          |
+| :--------: | :----: | :------------------------------ |
+|   card_no   | String |         银行卡ID           |
+|   card_type   | String |         银行卡类型           |
+|   max_amount_singletx   | String |      当笔限额          |
+|   max_amount_daily   | String |      日限额           |
+|   max_amount_monthly   | String |   月限额           |
+|   available_balance   | String |   可用余额（USD）           |
+
+### 查询卡限额
+
+```text
+url：/api/v1/bank/cardlimit
+method：GET
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String |必填| 银行卡ID |
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "card_no": "438521******2001",
+        "card_type": "60000001",
+        "max_amount_singletx": "1000",
+        "max_amount_daily": "2000",
+        "max_amount_monthly": "100000",
+        "available_balance": "100",
+    }
+}
+```
+
+| Parameter |  Type  |          Description          |
+| :--------: | :----: | :------------------------------ |
+|   card_no   | String |         银行卡ID           |
+|   card_type   | String |         银行卡类型           |
+|   max_amount_singletx   | String |      当笔限额          |
+|   max_amount_daily   | String |      日限额           |
+|   max_amount_monthly   | String |   月限额           |
+|   available_balance   | String |   可用余额（USD）           |
+
+
+## 验证码（不需要对接）
 
 邮箱和手机验证码等接口。
 
@@ -2452,7 +2538,7 @@ method：POST
 
 
 
-### 校验邮箱验证码
+### 校验邮箱验证码（不需要对接）
 
 ```text
 url：/api/v1/emails/{email}/verification-codes?code={code}&mail_token={mail_token}

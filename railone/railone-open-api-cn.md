@@ -2433,7 +2433,7 @@ method：POST
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
 |     card_no     | String |必填| 银行卡ID |
-|   max_amount_singletx   | String |      当笔限额          |
+|   max_amount_single   | String |      当笔限额          |
 |   max_amount_daily   | String |      日限额           |
 |   max_amount_monthly   | String |   月限额           |
 
@@ -2446,7 +2446,7 @@ method：POST
     "result": {
         "card_no": "438521******2001",
         "card_type": "60000001",
-        "max_amount_singletx": "1000",
+        "max_amount_single": "1000",
         "max_amount_daily": "2000",
         "max_amount_monthly": "100000",
         "available_balance": "100",
@@ -2458,7 +2458,7 @@ method：POST
 | :--------: | :----: | :------------------------------ |
 |   card_no   | String |         银行卡ID           |
 |   card_type   | String |         银行卡类型           |
-|   max_amount_singletx   | String |      当笔限额          |
+|   max_amount_single   | String |      当笔限额          |
 |   max_amount_daily   | String |      日限额           |
 |   max_amount_monthly   | String |   月限额           |
 |   available_balance   | String |   可用余额（USD）           |
@@ -2485,7 +2485,7 @@ method：GET
     "result": {
         "card_no": "438521******2001",
         "card_type": "60000001",
-        "max_amount_singletx": "1000",
+        "max_amount_single": "1000",
         "max_amount_daily": "2000",
         "max_amount_monthly": "100000",
         "available_balance": "100",
@@ -2497,7 +2497,7 @@ method：GET
 | :--------: | :----: | :------------------------------ |
 |   card_no   | String |         银行卡ID           |
 |   card_type   | String |         银行卡类型           |
-|   max_amount_singletx   | String |      当笔限额          |
+|   max_amount_single   | String |      当笔限额          |
 |   max_amount_daily   | String |      日限额           |
 |   max_amount_monthly   | String |   月限额           |
 |   available_balance   | String |   可用余额（USD）           |

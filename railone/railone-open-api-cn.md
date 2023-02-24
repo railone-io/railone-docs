@@ -2433,9 +2433,9 @@ method：POST
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
 |     card_no     | String |必填| 银行卡ID |
-|   max_amount_single   | String |      当笔限额          |
-|   max_amount_daily   | String |      日限额           |
-|   max_amount_monthly   | String |   月限额           |
+|   max_amount_single   | String | 必填|     当笔限额          |
+|   max_amount_daily   | String | 必填|     日限额           |
+|   max_amount_monthly   | String |  必填| 月限额           |
 
 - 响应：
 

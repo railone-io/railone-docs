@@ -2461,7 +2461,7 @@ method：POST
 |   max_amount_single   | String |      当笔限额          |
 |   max_amount_daily   | String |      日限额           |
 |   max_amount_monthly   | String |   月限额           |
-|   available_balance   | String |   可用余额（USD）           |
+|   available_balance   | String |   可用余额           |
 
 ### 查询卡限额
 
@@ -2500,7 +2500,7 @@ method：GET
 |   max_amount_single   | String |      当笔限额          |
 |   max_amount_daily   | String |      日限额           |
 |   max_amount_monthly   | String |   月限额           |
-|   available_balance   | String |   可用余额（USD）           |
+|   available_balance   | String |   可用余额           |
 
 
 ## 验证码（不需要对接）

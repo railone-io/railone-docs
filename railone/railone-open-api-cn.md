@@ -2825,7 +2825,7 @@ events element convert string to json:
 
 | 名称| 类型|描述 |
 | --- | --- |--- |
-| action |String |  creditcard-balance-updated |
+| action |String |  depositcard-balance-updated |
 | events[n].params.tx_id |String | 交易ID |
 | events[n].params.card_no |String | 卡ID |
 

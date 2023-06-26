@@ -2300,7 +2300,7 @@ method：POST
 |   bank_tx_list[0].credit   | String | 存入金额(卡支持的货币)   |
 |   bank_tx_list[0].credit_usd   | String | 存入金额(USD)  |
 |   bank_tx_list[0].fee   | String | 手续费，只有部分卡有值。  |
-|   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出) 6.其他 7.结算调整 8.退款 9.消费失败|
+|   bank_tx_list[0].type   | int | 交易类型，1.消费 2.充值 3.取款 4.转账(转入) 5.转账(转出) 6.其他 7.结算调整 8.退款 9.消费失败 10.verification（绑卡验证交易） |
 |   bank_tx_list[0].tx_currency   | String | 实际交易货币  |
 |   bank_tx_list[0].tx_amount   | String | 实际交易货币的交易金额  |
 |   bank_tx_list[0].origin_transaction_id | String | 原消费交易id，退款交易才可能有值  |

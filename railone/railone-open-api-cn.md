@@ -540,6 +540,7 @@ method：POST
 | cust_tx_id | String | 选填| KYC流水号|
 | sign_img | String | 选填| 签名照片。base64编码，照片文件大小应小于1M|
 | poa_doc | String[3] |选填 |地址证明照片（暂不支持）。base64编码，照片或PDF文件每个文件大小应小于2M|
+| card_number | String | 选填| 绑卡卡号，用于提前售卡，只支持J卡|
 
 - 响应：
 

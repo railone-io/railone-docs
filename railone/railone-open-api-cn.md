@@ -60,6 +60,7 @@
      - [6.6 查询卡已授权交易](#查询卡已授权交易)
      - [6.7 卡限额修改](#卡限额修改)
      - [6.8 查询卡限额](#查询卡限额)
+     - [6.9 卡冻结](#卡冻结)
 - [7.验证码](#验证码)
      - [7.1 发送邮箱验证码](#发送邮箱验证码)
      - [7.2 校验邮箱验证码](#校验邮箱验证码)
@@ -2538,6 +2539,33 @@ method：GET
 |   max_amount_daily   | String |      日限额           |
 |   max_amount_monthly   | String |   月限额           |
 |   available_balance   | String |   可用余额           |
+
+
+
+### 卡冻结
+
+```text
+url：/api/v1/bank/freeze
+method：POST
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String |必填| 银行卡ID |
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {}
+}
+```
+
+
 
 
 ## 验证码（不需要对接）

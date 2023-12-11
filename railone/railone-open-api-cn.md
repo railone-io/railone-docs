@@ -792,6 +792,7 @@ method：GET
 | card_type_id |String  |银行卡种类对应的id,比如 10010001|
 |   kyc_info | text  |KYC 其他信息|
 | cust_tx_id | String | KYC流水号|
+|   status    |  int   | 状态码: 0 已提交， 1 认证通过(开卡成功)， 2 认证未通过， 3 认证中， 4 提交信息处理中 6 已退款|
 
 ## 开卡和激活
 

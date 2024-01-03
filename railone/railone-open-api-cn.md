@@ -61,6 +61,9 @@
      - [6.7 卡限额修改](#卡限额修改)
      - [6.8 查询卡限额](#查询卡限额)
      - [6.9 卡冻结](#卡冻结)
+- [礼品卡](#礼品卡)
+     - [购买礼品卡](#购买礼品卡)
+     - [查询礼品卡](#查询礼品卡)
 - [7.验证码](#验证码)
      - [7.1 发送邮箱验证码](#发送邮箱验证码)
      - [7.2 校验邮箱验证码](#校验邮箱验证码)
@@ -2568,6 +2571,106 @@ method：POST
 ```
 
 
+## 礼品卡
+
+### 购买礼品卡
+
+```text
+url：/api/v1/gift-card/buy
+method：POST
+```
+
+- 请求：
+
+| Parameter |   Type    | Requirement | Description |
+| :------------: |:---------:|:-----------:|:------------|
+|   product_code |  String   |     必填      | 礼品卡产品编码     |
+|   count |  int   |     必填      | 购买数量        |
+|   cust_tx_id |  String   |     必填      | 商户订单号       |
+|   email |  String   |     必填      | 邮箱       |
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "total": 1,
+        "records": [
+            {
+                "order_no": "2024010310441397701766379",
+                "card_number": "1000000003",
+                "card_code": "218JNNJ1N1IK3"
+            }
+        ]
+    }
+}
+```
+
+|    Parameter    |  Type   | Description         |
+| :---------: |:-------:|:--------------------|
+| order_no    | String  | 订单号                  |
+| card_number    | String  | 卡号                  |
+| card_code    | String  | Code                |
+
+### 查询礼品卡
+
+```text
+url：/api/v1/gift-card
+method：GET
+```
+
+- 请求：
+
+|  Parameter   |  Type   | Requirement | Description |
+|:------------:|:-------:|:-----------:|:------------|
+|   page_num   |   int   |     选填      | 页数          |
+|  page_size   | int |     选填      | 页的大小        |
+|  cust_tx_id  | String  |     选填      | 商户订单号       |
+| product_code | String  |     选填      | 礼品卡产品编码     |
+| card_number | String  |     选填      | 礼品卡卡号       |
+
+
+- 响应：
+
+```json
+{
+    "code": 0,
+    "msg": "SUCCESS",
+    "result": {
+        "total": 1,
+        "records": [
+            {
+                "order_no": "2024010310441397701766379",
+                "cust_tx_id": "020351010",
+                "product_name": "99U Get 100 USD Amazon USA",
+                "product_code": "GC202401020351010825322",
+                "face_value": 2.00,
+                "currency": "USD",
+                "card_number": "1000000003",
+                "card_code": "218JNNJ1N1IK3",
+                "status": 2,
+                "refund_status": 0
+            }
+        ]
+    }
+}
+```
+
+
+|    Parameter    |  Type   | Description         |
+| :---------: |:-------:|:--------------------|
+| order_no    | String  | 订单号                  |
+| cust_tx_id    | String  | 机构订单号                  |
+| card_number    | String  | 卡号                  |
+| card_code    | String  | Code                |
+|  face_value    | Decimal | 面值                     |
+|  currency  | String  | 币种                     |
+| card_number    | String  | 卡号                     |
+| card_code    | String  | Code                   |
+|  status    | Integer | 卡片状态, 1待售 2已售          |
+| refund_status    | Integer  | 0未退款 1退款中 2已退款 3退款驳回   |
 
 
 ## 验证码（不需要对接）

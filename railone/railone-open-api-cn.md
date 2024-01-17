@@ -2938,14 +2938,14 @@ events 数组元素从 string 转成 json:
 
 | 名称| 类型|描述 |
 | --- | --- |--- |
-| action |String |  deposit-status|
+| action |String |  tx-status|
 | events[n].params.tx_id |String | 交易ID |
 | events[n].params.status  |int| 卡充值状态, 1.成功, 2.失败, 5.取消 |
 
 示例：
 ```
 {
-    "action": "deposit-status",
+    "action": "tx-status",
     "events": [
         "{\"id\":\"bc76488ddda4\",\"create_time\":1585293811000,\"params\":{\"tx_id\":\"2020031609283339501898843\",\"status\":1}}"
     ]

@@ -1854,6 +1854,7 @@ method：GET
 |    amount_limit      | String | 当前限额         |
 |    old_amount_limit      | String | 旧限额         |
 |    tx_type      | String | 交易类型。 01 是增加授信，02 是减少授信        |
+|    tx_status      | String | 交易状态。 "0" 处理中，"1" 是成功，"2" 是失败        |
 |    tx_amount      | String | 变化的金额         |
 |     available_amount      | String | 可用金额  |
 |     old_available_amount      | String | 旧的可用金额  |

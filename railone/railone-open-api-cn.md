@@ -1752,7 +1752,7 @@ method：POST
 |     amount_limit      | String | 必填|当前授信金额         |
 |     new_available_amount      | String | 必填|新的可用金额         |
 |   cust_tx_id    | String | 必填|机构的交易流水号           |
-|     remark     | String | 选填|交易备注                   |
+|     remark     | String | 必填|交易备注                   |
 
 - 响应：
 
@@ -1832,6 +1832,7 @@ method：GET
         "amount_limit": "8000", // 当前限额
         "old_amount_limit":"10000", // 旧限额
         "tx_type": "02",  // 01 是增加授信，02是减少授信
+        "tx_status": "1", // "0" 处理中，"1" 是成功，"2" 是失败 
         "tx_amount": "2000", // 变化的金额
         "available_amount": "2000",    
         "old_available_amount": "4000",

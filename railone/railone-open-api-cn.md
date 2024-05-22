@@ -3168,7 +3168,7 @@ method：PUT
 
 | 名称| 类型|描述 |
 | --- | --- |--- |
-| action|String  | card-status |
+| action|String  | card-lock-status |
 | events[n].params.card_no |String | 卡ID |
 | events[n].params.status |int | 0.处理中 1.成功 2.失败 |
 | events[n].request_type | int |  1.冻结 2.解冻 3.挂失 4.重置密码 5.补卡|

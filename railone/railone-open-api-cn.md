@@ -175,7 +175,7 @@ API 域名：
 
 ```
 {
-	"ont_id":"did:ont:Ae9ujqUnAtH9yRiepRvLUE3t9R2NbCTZPG",
+	"from_address":"Ae9ujqUnAtH9yRiepRvLUE3t9R2NbCTZPG",
 	"amount":190,
 	"to_address":"AUol16ghiT9AtxRDtNeq3ovhWJ5iaY6iyd"
 }
@@ -184,7 +184,7 @@ API 域名：
 转换后为：
 
 ```text
-amount=190&ont_id=did:ont:Ae9ujqUnAtH9yRiepRvLUE3t9R2NbCTZPG&to_address=AUol16ghiT9AtxRDtNeq3ovhWJ5iaY6iyd
+amount=190&from_address=Ae9ujqUnAtH9yRiepRvLUE3t9R2NbCTZPG&to_address=AUol16ghiT9AtxRDtNeq3ovhWJ5iaY6iyd
 ```
 
 

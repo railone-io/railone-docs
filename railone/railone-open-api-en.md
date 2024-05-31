@@ -26,9 +26,7 @@
      * [3.8 Query tracking number](#Query-tracking-number)
 * [4.Transactions](#transactions)
      * [4.1 User deposit with stablecoin](#User-deposit-with-stablecoin)
-         * [4.2.2 Fixed amount will be received in fiat](#User-deposit-with-stablecoin-Fixed-amount-will-be-received-in-fiat)
-     * [4.2 User deposit with non-stablecoin](#User-deposit-with-non-stablecoin)
-         * [4.2.2 Fixed amount will be received in fiat](#User-deposit-with-non-stablecoin-Fixed-amount-will-be-received-in-fiat)
+     * [4.2 Fixed amount will be received in fiat](#User-deposit-with-stablecoin-Fixed-amount-will-be-received-in-fiat)
      * [4.3 Query Exchange Price](Query-Exchange-Price)
      * [4.4 Query a deposit transaction status](#Query-a-deposit-transaction-status)
      * [4.5 Query all the deposit records](#Query-all-the-deposit-records)
@@ -164,7 +162,7 @@ Here is an example `body`-
 The payload is converted to-
 
 ```text
-amount=190&ont_id=did:ont:Ae9ujqUnAtH9yRiepRvLUE3t9R2NbCTZPG&to_address=AUol16ghiT9AtxRDtNeq3ovhWJ5iaY6iyd
+amount=190&from_address=Ae9ujqUnAtH9yRiepRvLUE3t9R2NbCTZPG&to_address=AUol16ghiT9AtxRDtNeq3ovhWJ5iaY6iyd
 ```
 
 #### Code Implementation and Examples:
@@ -1072,106 +1070,8 @@ method：POST
 |     exchange_rate      | String |  exchange rate of USDT/USD  |
 | fiat_exchange_rate    | String  | exchange rate of card currency/USD              |
 
-### User deposit with non-stablecoin
-
-ETH amount please greater than or equal to 0.01, BTC amount please greater than or equal to 0.005.
-
-- Request:
-
-```text
-url：/api/v1/deposit-transactions/crypto
-method：POST
-```
-
-| Parameter  |  Type  | Whether Required |                            Description                            |
-| :--------: | :----: | :--------------: | :---------------------------------------------------------------: |
-|  card_no   | String |     Required     |                           Bank card no.                           |
-|  acct_no   | String |     Required     | Institution account name (Unique within scope of the institution) |
-|   amount   | String |     Required     |             Deposit amount in corresponding coin_type              |
-| coin_type  | String |     Required     |             Only BTC and ETH supported yet              |
-| cust_tx_id | String |     Required     |                    Institution transaction ID                     |
-|  remarks   | String |     Optional     |                        Transaction remarks                        |
-
-- Response:
-
-```json
-{
-    "code": 0,
-    "msg": "SUCCESS",
-    "result": {
-        "tx_id": "2020022511324811001637548",
-        "coin_type": "BTC",
-        "tx_amount": "0.01",         
-        "exchange_fee_rate": "0.002",
-        "exchange_fee": "0.01",
-        "currency_type": "USD",
-        "fiat_exchange_rate": "1",
-        "exchange_rate": "1.00221569722"        
-    }
-}
-```
-
-| Parameter |  Type    | Description |
-| :------------: | :----------: |:---------- |
-|     tx_id      | String | Railone transaction ID  |
-|    coin_type    |  int   |          Coin type          |
-|   tx_amount   | String |                        Deposit amount                         |
-|     exchange_fee_rate      | String | Fee rate for exchanging digital coin to USDT   |
-|     exchange_fee      | String | Fee for exchanging digital coin to USDT, Unit: ```coin_type```  |
-|     currency_type      | String | It is card supported currency type |
-|     exchange_rate      | String |  exchange rate of USDT/USD  |
-| fiat_exchange_rate    | String  | exchange rate of card currency/USD              |
 
 
-### User deposit with non-stablecoin (Fixed amount will be received in fiat)
-
-ETH amount please greater than or equal to 0.01, BTC amount please greater than or equal to 0.005.
-
-- Request:
-
-```text
-url：/api/v1/deposit-transactions/crypto/fiat-amount
-method：POST
-```
-
-| Parameter  |  Type  | Whether Required |                            Description                            |
-| :--------: | :----: | :--------------: | :---------------------------------------------------------------: |
-|  card_no   | String |     Required     |                           Bank card no.                           |
-|  acct_no   | String |     Required     | Institution account name (Unique within scope of the institution) |
-|   credited_amount   | String |     Required     |            Fixed amount will be received in fiat              |
-| coin_type  | String |     Required     |             Only BTC and ETH supported yet              |
-| cust_tx_id | String |     Required     |                    Institution transaction ID                     |
-|  remarks   | String |     Optional     |                        Transaction remarks                        |
-
-- Response:
-
-```json
-{
-    "code": 0,
-    "msg": "SUCCESS",
-    "result": {
-        "tx_id": "2020022511324811001637548",
-        "coin_type": "BTC",
-        "tx_amount": "0.01",         
-        "exchange_fee_rate": "0.002",
-        "exchange_fee": "0.01",
-        "currency_type": "USD",
-        "fiat_exchange_rate": "1",
-        "exchange_rate": "1.00221569722"        
-    }
-}
-```
-
-| Parameter |  Type    | Description |
-| :------------: | :----------: |:---------- |
-|     tx_id      | String | Railone transaction ID  |
-|    coin_type    |  int   |          Coin type          |
-|   tx_amount   | String |                        Deposit amount                         |
-|     exchange_fee_rate      | String | Fee rate for exchanging digital coin to USDT   |
-|     exchange_fee      | String | Fee for exchanging digital coin to USDT, Unit: ```coin_type```  |
-|     currency_type      | String | It is card supported currency type |
-|     exchange_rate      | String |  exchange rate of USDT/USD  |
-| fiat_exchange_rate    | String  | exchange rate of card currency/USD              |
 
 ### Query Exchange Price
 
@@ -1193,14 +1093,14 @@ method：GET
         "total": 2,
         "records": [
             {
-                "symbol": "BTC/USDT",
-                "price": "7553.5492732425",
-                "update_time": "2020-04-26 07:19:30"
+                "symbol": "USDT/USD",
+                "price": "0.99794468",
+                "update_time": "2024-04-26 07:19:30"
             },
             {
-                "symbol": "ETH/USDT",
-                "price": "193.9202409808",
-                "update_time": "2020-04-26 07:19:30"
+                "symbol": "USDC/USD",
+                "price": "0.99814434",
+                "update_time": "2024-04-26 07:19:30"
             }
         ]
     }

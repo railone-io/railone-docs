@@ -7,7 +7,7 @@
      - [1.2 查询机构余额](#查询机构余额)
      - [1.3 机构信息查询](#机构信息查询)
      - [1.4 上传公钥](#上传公钥)
-     - [1.5 费率查询](#费率查询)
+     - [1.5 卡费率查询](#卡费率查询)
      - [1.6 估算将到账的法币金额](#估算将到账的法币金额)
      - [1.7 估算需要充值多少数字货币](#估算需要充值多少数字货币)
 - [2.KYC](#KYC)
@@ -30,10 +30,8 @@
      - [3.9 升级双币种卡](#升级双币种卡)
      - [3.10 再次发送包含PIN码的邮件](#再次发送包含PIN码的邮件)
 - [4.充值](#充值)
-     - [4.1 用稳定币给用户卡充值](#用稳定币给用户卡充值)
-         - [4.1.2 固定到账法币金额](#用稳定币给用户卡充值-指定到账法币金额-)
-     - [4.2 用非稳定币给用户卡充值（不支持）](#用非稳定币给用户卡充值)
-         - [4.2.2 固定到账法币金额](#用非稳定币给用户卡充值-指定到账法币金额-)
+     - [4.1 给用户卡充值](#给用户卡充值)
+     - [4.2 固定到账法币金额](#用稳定币给用户卡充值-指定到账法币金额-)
      - [4.3 查询币对价格](#查询币对价格)
      - [4.4 查询某笔卡充值交易状态](#查询某笔卡充值交易状态)
      - [4.5 查询所有卡充值记录](#查询所有卡充值记录)
@@ -339,7 +337,7 @@ method：POST
 ```
 
 
-### 费率查询
+### 卡费率查询
 
 ```text
 url：/api/v1/institution/rates?card_type_id={card_type_id}
@@ -460,7 +458,7 @@ method：POST
 | :---------: | :---: | :--------------: | :--------------------------------------------------------|
 |  currency_amount  |  String  |    Required     |  需要充值到账的法币金额     |
 |  card_type_id  |  String  |    Required     |  卡种ID    |
-|  coin_type  |  String  |    Required     |  需要换算的数字货币类型    |
+|  coin_type  |  String  |    Required     |  需要换算的数字货币类型，usdt    |
 
 - Response:
 
@@ -1168,7 +1166,7 @@ method：POST
 
 
 
-### 用稳定币给用户卡充值
+### 给用户卡充值
 
 ```text
 url：/api/v1/deposit-transactions
@@ -1282,103 +1280,6 @@ method：POST
 |     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
 
 
-### 用非稳定币给用户卡充值(不支持)
-
- ETH 充值金额请大于或等于0.01，BTC 充值金额请大于或等于0.005。用非稳定币给用户卡充值，Railone 需要先去交易所按市场价兑换，```loading_fee``` 和 ```currency_amount``` 兑换后才能确定。
-
-```text
-url：/api/v1/deposit-transactions/crypto
-method：POST
-```
-
-- 请求：
-
-| Parameter |  Type  | Requirement  |Description                |
-| :------------: | :----: | :----------: |:---------- |
-|     card_no     | String | 必填|银行卡ID                   |
-|     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
-|     amount      | String | 必填|充值对应币种的金额         |
-|    coin_type    | String | 必填|币种。只支持BTC、ETH      |
-|   cust_tx_id    | String | 必填|机构的交易流水号           |
-|     remark     | String | 选填|交易备注                   |
-
-- 响应：
-
-```json
-{
-    "code": 0,
-    "msg": "SUCCESS",
-    "result": {
-        "tx_id": "2020022511324811001637548",
-        "coin_type": "BTC",
-        "tx_amount": "0.01",        
-        "exchange_fee_rate": "0",
-        "exchange_fee": "0",
-        "currency_type": "USD",
-        "fiat_exchange_rate": "1",
-        "exchange_rate": "1.00221569722"
-    }
-}
-```
-
-| Parameter |  Type    | Description |
-| :------------: | :----------: |:---------- |
-|     tx_id      | String | Railone 交易流水id  |
-|    coin_type    | String | 充值币种       |
-|    tx_amount      | String | 充值币种对应的金额         |
-|     exchange_fee_rate      | String | 充值币种兑换成USDT的费率   |
-|     exchange_fee      | String | 充值币种兑换成USDT的费用，单位是 ```coin_type```  |
-|     currency_type      | String | 到账法币类型  |
-|     exchange_rate      | String | USDT/USD汇率  |
-|     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
-
-### 用非稳定币给用户卡充值(固定到账法币金额,暂不支持)
-
-```text
-url：/api/v1/deposit-transactions/crypto/fiat-amount
-method：POST
-```
-
-- 请求：
-
-| Parameter |  Type  | Requirement  |Description                |
-| :------------: | :----: | :----------: |:---------- |
-|     card_no     | String | 必填|银行卡ID                   |
-|     acct_no     | String | 必填|机构端用户编号(机构端唯一) |
-|     credited_amount      | String | 必填|卡将到账的法币金额         |
-|    coin_type    | String | 必填|充值使用的币种。只支持BTC、ETH        |
-|   cust_tx_id    | String | 必填|机构的交易流水号           |
-|     remark     | String | 选填|交易备注                   |
-
-- 响应：
-
-```json
-{
-    "code": 0,
-    "msg": "SUCCESS",
-    "result": {
-        "tx_id": "2020022511324811001637548",
-        "coin_type": "BTC",
-        "tx_amount": "0.01",        
-        "exchange_fee_rate": "0",
-        "exchange_fee": "0",
-        "currency_type": "USD",
-        "fiat_exchange_rate": "1",
-        "exchange_rate": "1.00221569722"
-    }
-}
-```
-
-| Parameter |  Type    | Description |
-| :------------: | :----------: |:---------- |
-|     tx_id      | String | Railone 交易流水id  |
-|    coin_type    | String | 充值币种       |
-|    tx_amount      | String | 充值币种对应的金额         |
-|     exchange_fee_rate      | String | 充值币种兑换成USDT的费率   |
-|     exchange_fee      | String | 充值币种兑换成USDT的费用，单位是 ```coin_type```  |
-|     currency_type      | String | 到账法币类型  |
-|     exchange_rate      | String | USDT/USD汇率  |
-|     fiat_exchange_rate      | String | 卡支持的法币/USD汇率  |
 
 ### 查询币对价格
 
@@ -1400,14 +1301,14 @@ method：GET
         "total": 2,
         "records": [
             {
-                "symbol": "BTC/USDT",
-                "price": "7553.5492732425",
-                "update_time": "2020-04-26 07:19:30"
+                "symbol": "USDT/USD",
+                "price": "0.99794468",
+                "update_time": "2024-05-31 07:19:30"
             },
             {
-                "symbol": "ETH/USDT",
-                "price": "193.9202409808",
-                "update_time": "2020-04-26 07:19:30"
+                "symbol": "USDC/USD",
+                "price": "0.99814434",
+                "update_time": "2024-05-31 07:19:30"
             }
         ]
     }

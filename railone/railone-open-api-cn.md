@@ -5,11 +5,12 @@
 - [1.机构](#机构)
      - [1.1 支持的卡种类查询](#支持的卡种类查询)
      - [1.2 查询机构余额](#查询机构余额)
-     - [1.3 机构信息查询](#机构信息查询)
+     - [1.3 公钥查询](#公钥查询)
      - [1.4 上传公钥](#上传公钥)
      - [1.5 卡费率查询](#卡费率查询)
      - [1.6 估算将到账的法币金额](#估算将到账的法币金额)
      - [1.7 估算需要充值多少数字货币](#估算需要充值多少数字货币)
+     - [1.8 法币账户查询](#法币账户查询)
 - [2.KYC](#KYC)
      - [2.1 提交用户 KYC 数据](#提交用户-KYC-数据)
      - [2.2 提交用户KYC附件(可选)](#提交用户KYC附件-可选)
@@ -285,7 +286,7 @@ method：GET
 | addresses[0].address    | String  | 数字货币地址         |
 
 
-### 机构信息查询
+### 公钥查询
 
 
 - Request:
@@ -404,7 +405,7 @@ method：POST
 |  Parameter  | Type  | Whether Required |                        Description                         |
 | :---------: | :---: | :--------------: | :-------------------------------------------------------- |
 |  coin_amount  |  String  |    Required     |  充值的数字货币金额     |
-| coin_type  |  String  |    Required     |  充值的数字货币类型     |
+| coin_type  |  String  |    Required     |  充值的数字货币类型，USDT     |
 |  card_type_id  |  String  |    Required     |  卡种ID    |
 
 - Response:
@@ -496,6 +497,11 @@ method：POST
 
 > (currency_amount * fiat_exchange_rate) = ((coin_amount - exchange_fee - loading_fee) * coin_price) * exchange_rate 
 > 总到账USD = 实际充值USDT * exchange_rate（USDT/USD）
+
+
+## 法币账户查询
+
+请联系我们商务
 
 ## KYC
 

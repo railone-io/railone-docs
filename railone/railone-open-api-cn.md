@@ -873,6 +873,8 @@ method：POST
 
 ### 用户激活卡片
 
+虚拟卡激活成功后，通过银行接口查卡信息可以拿到真实卡号、cvv、过期时间。
+
 ```text
 url：/api/v1/debit-cards/status
 method：PUT
@@ -893,11 +895,21 @@ method：PUT
 {
   "code": 0,
   "msg": "string",
-  "result": true
+  "result": {
+    "card_type_id":"72000001",
+    "card_no":"4360396720000016920",
+    "acct_no":"test20240529",
+    "status":1
+  }
 }
 ```
 
-
+| Parameter  |  Type  |             Description             |
+| :--------: | :----: | :------------------------------ |
+|   acct_no   | String |     机构端用户编号(机构端唯一)      |
+|   card_type_id   | String |     卡类型ID     |
+|   card_no   |  int   |              卡ID               |
+|   status    |  int   | 状态码: 0 冻结， 1 激活成功， 2未激活， 3. 激活待审核， 4. 激活审核失败,  5. 申请失败(卡片正在制作中，请过会再申请) |
 
 
 ### 查询所有卡片状态
@@ -926,6 +938,7 @@ method：GET
         "records": [
             {
                 "acct_no": "1",
+                "card_type_id":"72000001",
                 "card_no": "4385211202597301",
                 "status": 4,
                 "reason": "{\"code\":1110061,\"msg\":\"Activation failure, hand holding card is not plastic card\"}",
@@ -940,6 +953,7 @@ method：GET
 | Parameter  |  Type  |             Description             |
 | :--------: | :----: | :------------------------------ |
 |   acct_no   | String |     机构端用户编号(机构端唯一)      |
+|   card_type_id   | String |     卡类型ID     |
 |   card_no   |  int   |              银行卡号               |
 |   status    |  int   | 状态码: 0 冻结， 1 激活成功， 2未激活， 3. 激活待审核， 4. 激活审核失败,  5. 申请失败(卡片正在制作中，请过会再申请) |
 |   reason   | String | 激活失败原因。其他情况为空字符串 |
@@ -977,6 +991,7 @@ method：GET
         "records": [
             {
                 "acct_no": "1",
+                "card_type_id":"72000001",
                 "card_no": "4385211202597301",
                 "status": 4,
                 "reason": "{\"code\":1110061,\"msg\":\"Activation failure, hand holding card is not plastic card\"}",
@@ -990,6 +1005,7 @@ method：GET
 | Parameter  |  Type  |             Description             |
 | :--------: | :----: | :------------------------------ |
 |   acct_no   | String |     机构端用户编号(机构端唯一)      |
+|   card_type_id   | String |     卡类型ID     |
 |   card_no   |  int   |              银行卡ID               |
 |   status    |  int   | 状态码: 0 冻结， 1 激活成功， 2未激活， 3. 激活待审核， 4. 激活审核失败, 5. 申请失败(卡片正在制作中，请过会再申请)|
 |   reason   | String | 激活失败原因。其他情况为空字符串 |

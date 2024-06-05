@@ -2099,6 +2099,7 @@ method：POST
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
 |     card_no     | String | 必填|银行卡ID                   |
+|     cust_tx_id     | String |必填| 唯一交易ID    |
 |     limit_amount     | String |必填|金额，单位是usd    |
 
 - 响应：
@@ -2117,7 +2118,7 @@ method：POST
 ```
 
 
-### 查询限额
+### 查询当前限额
 
 ```
 url：/api/v1/credit/query/cardlimit
@@ -2138,7 +2139,41 @@ method：GET
   "msg": "string",
   "result": {
     "limit_amount": "1000",
-    "available_amount": "300"
+    "available_amount": "300",
+  }
+}
+```
+
+### 查询修改限额记录
+
+```
+url：/api/v1/credit/query/cardlimit/history
+method：GET
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|     card_no     | String | 必填|银行卡ID                   |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": {        
+    "total": 1,
+    "records": [{
+        "limit_amount": "1000",
+        "old_limit_amount": "800",
+        "available_amount": "300",
+        "old_available_amount": "100",
+        "status": 0, // 0 处理中，1 成功，2 失败
+        "create_time": 1585293811000, 
+        "update_time": 1585293811000
+    }]
   }
 }
 ```

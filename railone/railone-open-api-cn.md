@@ -52,7 +52,7 @@
      - [5.10 查询卡种共享账户余额](#查询卡种共享账户余额)
      - [5.11 修改限额](#修改限额)
      - [5.12 查询当前限额](#查询当前限额)
-     - [5.13 修改限额记录](#修改限额记录)
+     - [5.13 查询限额修改记录](#查询限额修改记录)
 - [6.银行卡查询](#银行卡查询)
      - [6.1 查询卡是否激活](#查询卡是否激活)
      - [6.2 查询卡余额](#查询卡余额)
@@ -2110,6 +2110,7 @@ method：POST
   "code": 0,
   "msg": "string",
   "result": {
+    "tx_id": "2024052712121212",
     "limit_amount": "1000",
     "old_limit_amount": "800",
     "available_amount": "300",
@@ -2145,7 +2146,7 @@ method：GET
 }
 ```
 
-### 修改限额记录
+### 查询限额修改记录
 
 ```
 url：/api/v1/credit/query/cardlimit/history
@@ -2167,6 +2168,8 @@ method：GET
   "result": {        
     "total": 1,
     "records": [{
+        "cust_tx_id": "werwfgdfgdhgfg",
+        "tx_id": "2024052712121212",
         "limit_amount": "1000",
         "old_limit_amount": "800",
         "available_amount": "300",

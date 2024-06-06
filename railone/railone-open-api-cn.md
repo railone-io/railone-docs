@@ -2101,7 +2101,7 @@ method：POST
 | :------------: | :----: | :----------: |:---------- |
 |     card_no     | String | 必填|银行卡ID                   |
 |     cust_tx_id     | String |必填| 唯一交易ID    |
-|     limit_amount     | String |必填|金额，单位是usd    |
+|     amount_limit     | String |必填|金额，单位是usd    |
 
 - 响应：
 
@@ -2111,8 +2111,8 @@ method：POST
   "msg": "string",
   "result": {
     "tx_id": "2024052712121212",
-    "limit_amount": "1000",
-    "old_limit_amount": "800",
+    "amount_limit": "1000",
+    "old_amount_limit": "800",
     "available_amount": "300",
     "old_available_amount": "100"
   }
@@ -2140,7 +2140,7 @@ method：GET
   "code": 0,
   "msg": "string",
   "result": {
-    "limit_amount": "1000",
+    "amount_limit": "1000",
     "available_amount": "300",
   }
 }
@@ -2170,8 +2170,8 @@ method：GET
     "records": [{
         "cust_tx_id": "werwfgdfgdhgfg",
         "tx_id": "2024052712121212",
-        "limit_amount": "1000",
-        "old_limit_amount": "800",
+        "amount_limit": "1000",
+        "old_amount_limit": "800",
         "available_amount": "300",
         "old_available_amount": "100",
         "status": 0, // 0 处理中，1 成功，2 失败

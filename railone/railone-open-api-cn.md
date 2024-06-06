@@ -41,7 +41,7 @@
      - [4.8 查用户兑换记录](#查用户兑换记录)
 - [5.信用卡（共享卡）](#信用卡)
      - [5.1 授信](#信用卡授信)
-     - [5.2 授信记录查询](#授信记录查询)
+     - [5.2 查询授信记录](#查询授信记录)
      - [5.3 用户授信额度查询](#用户授信额度查询)
      - [5.4 还款（不支持）](#还款)
      - [5.5 还款记录查询（不支持）](#还款记录查询)
@@ -1673,6 +1673,7 @@ method：GET
 url：/api/v1/credit/limit
 method：POST
 ```
+available_amount，amount_limit 参数如果不知道如何填写可以从查询接口查到，amount_limit在商户的数据库里也有保存。这两个参数的作用是，商户确定当前卡里可用余额和限额是正确的。基于这个条件，再给用户设置新的可用额度new_available_amount。
 
 - 请求：
 
@@ -1723,7 +1724,7 @@ method：POST
 |     available_amount      | String | 可用金额  |
 |     old_available_amount      | String | 旧的可用金额  |
 
-### 授信记录查询
+### 查询授信记录
 
 ```text
 url：/api/v1/credit/limit?acct_no={acct_no}&card_no={card_no}

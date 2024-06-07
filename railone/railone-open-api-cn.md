@@ -627,7 +627,8 @@ method：GET
       {
         "acct_no": "1222",
         "card_type_id": "10010001",
-        "status": 2,
+        "status": 3,
+        "face_recognition_url": "https://www.hh.io", //认证中才可能有活体认证链接
         "reason": "{\"code\":1110032,\"msg\":\"KYC failure, photo error\"}",
         "create_time": 1546300800000
       }
@@ -677,7 +678,8 @@ method：GET
       {
         "acct_no": "1222",
         "card_type_id": "10010001",
-        "status": 2,
+        "status": 3,
+        "face_recognition_url": "https://www.hh.io", //认证中才可能有活体认证链接
         "reason": "{\"code\":1110032,\"msg\":\"KYC failure, photo error\"}",
         "create_time": 1546300800000
       }
@@ -2928,6 +2930,7 @@ events 数组元素从 string 转成 json:
        "params":{
            "card_type_id": "50010003",
            "acct_no": "032500004",
+           "face_recognition_url": "https://www.hh.io", //认证中才可能有活体认证链接，否则不推送认证中
            "status": 1
        }
 }

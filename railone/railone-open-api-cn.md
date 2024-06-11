@@ -50,14 +50,14 @@
      - [5.8 解冻](#解冻)
      - [5.9 给卡种共享账户充值](#给卡种共享账户充值)
      - [5.10 查询卡种共享账户余额](#查询卡种共享账户余额)
-- [5.共享卡](#共享卡)
-     - [5.7 冻结](#冻结)
-     - [5.8 解冻](#解冻)
-     - [5.9 给卡种共享账户充值](#给卡种共享账户充值)
-     - [5.10 查询卡种共享账户余额](#查询卡种共享账户余额)
-     - [5.11 修改限额](#修改限额)
-     - [5.12 查询当前限额](#查询当前限额)
-     - [5.13 查询限额修改记录](#查询限额修改记录)
+- [6.共享卡](#共享卡)
+     - [6.1 修改限额](#修改限额)
+     - [6.2 查询当前限额](#查询当前限额)
+     - [6.3 查询限额修改记录](#查询限额修改记录)
+     - [6.4 冻结](#冻结)
+     - [6.5 解冻](#解冻)
+     - [6.6 给卡种共享账户充值](#给卡种共享账户充值)
+     - [6.7 查询卡种共享账户余额](#查询卡种共享账户余额)
 - [6.银行卡查询](#银行卡查询)
      - [6.1 查询卡是否激活](#查询卡是否激活)
      - [6.2 查询卡余额](#查询卡余额)
@@ -2095,11 +2095,13 @@ method：GET
 }
 ```
 
+## 共享卡
+
 
 ### 修改限额
 
 ```
-url：/api/v1/credit/modify/cardlimit
+url：/api/v1/share/modify/cardlimit
 method：POST
 ```
 
@@ -2131,7 +2133,7 @@ method：POST
 ### 查询当前限额
 
 ```
-url：/api/v1/credit/query/cardlimit
+url：/api/v1/share/query/cardlimit
 method：GET
 ```
 
@@ -2157,7 +2159,7 @@ method：GET
 ### 查询限额修改记录
 
 ```
-url：/api/v1/credit/query/cardlimit/history
+url：/api/v1/share/query/cardlimit/history
 method：GET
 ```
 
@@ -2189,6 +2191,109 @@ method：GET
   }
 }
 ```
+
+
+### 冻结
+
+```
+url：/api/v1/share/lock
+method：PUT
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+|     card_no     | String |必填|银行卡ID    |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": true
+}
+```
+
+### 解冻
+
+```
+url：/api/v1/share/unlock
+method：PUT
+```
+注意该PUT接口的参数不是在body里，而是在URL里。
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    acct_no     | String | 必填|机构用户的唯一id号 |
+|     card_no     | String |必填|银行卡ID    |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": true
+}
+```
+
+### 给卡种共享账户充值
+
+```
+url：/api/v1/share/shareaccount/deposit
+method：POST
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    card_type_id     | String | 必填| 卡种id，如 60000004 |
+|     amount     | String |必填|金额，单位是usdt    |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": {
+  	"old_balance": "500",
+	"balance": "1000",
+  }
+}
+```
+
+### 查卡种共享账户余额
+
+```
+url：/api/v1/share/shareaccount/balance
+method：GET
+```
+
+- 请求：
+
+| Parameter |  Type  | Requirement  |Description |
+| :------------: | :----: | :----------: |:---------- |
+|    card_type_id     | String | 必填| 信用卡卡种id，如 60000004 |
+
+- 响应：
+
+```json
+{
+  "code": 0,
+  "msg": "string",
+  "result": {
+  	"balance": "1000"
+  }
+}
+```
+
 
 
 ## 银行卡查询

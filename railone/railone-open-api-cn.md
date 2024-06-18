@@ -2509,6 +2509,7 @@ method：POST
                   "credit": "",
                   "credit_usd": "",
                   "fee": "0",
+                  "end_bal": "end_bal", //如果是0，代表没交易后余额
                   "origin_transaction_id": "",
                   "type": 1
               },
@@ -2522,6 +2523,7 @@ method：POST
                   "credit": "",
                   "credit_usd": "",
                   "fee": "0",
+                  "end_bal": "end_bal", //如果是0，代表没交易后余额
                   "origin_transaction_id": "",
                   "type": 1
               }
@@ -2555,6 +2557,7 @@ method：POST
 |   bank_tx_list[0].reason   | String | 交易失败原因  |
 |   bank_tx_list[0].tx_currency   | String | 实际交易货币  |
 |   bank_tx_list[0].tx_amount   | String | 实际交易货币的交易金额  |
+|   bank_tx_list[0].end_bal   | String | 交易后余额。如果是0，代表没交易后余额  |
 |   bank_tx_list[0].origin_transaction_id | String | 原消费交易id，退款交易才可能有值  |
 
 ### 查询卡敏感信息

@@ -1202,7 +1202,8 @@ method：POST
 ### 给用户卡充值
 
 ```text
-url：/api/v1/deposit-transactions
+内扣 url：/api/v1/deposit-transactions
+外扣 url：/api/v1/deposit-transactions/external-deduction
 method：POST
 ```
 

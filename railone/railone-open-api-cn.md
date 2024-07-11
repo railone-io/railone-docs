@@ -3199,15 +3199,18 @@ events element convert string to json:
 | 名称| 类型|描述 |
 | --- | --- |--- |
 | action |String |  depositcard-balance-updated |
-| events[n].params.tx_id |String | 交易ID |
-| events[n].params.card_no |String | 卡ID |
+| events[n].params.otp |String | 验证码 |
+| events[n].params.card_no |String | 验证码 |
+| events[n].params.transaction_currency |String | 交易货币 |
+| events[n].params.transaction_amount |String | 交易金额 |
+| events[n].params.merchant_name |String | 商户名 |
 
 示例：
 ```
 {
     "action": "card-3ds-otp",
     "events": [
-        "{\"id\":\"bc76488ddda4\",\"create_time\":1585293811000,\"params\":{\"card_no\": \"78833000000198766\",\"otp\":\"234235\"}}"
+        "{\"id\":\"bc76488ddda4\",\"create_time\":1585293811000,\"params\":{\"card_no\": \"78833000000198766\",\"otp\":\"234235\",\"transaction_currency\":\"USD\",\"transaction_amount\":\"100\",\"merchant_name\":\"Example Merchant\"}}"
     ]
 }
 
@@ -3217,7 +3220,10 @@ events element convert string to json:
        "create_time": 1585293811000,
        "params":{
            "otp": "234235",
-           "card_no": "78833000000198766"
+           "card_no": "78833000000198766",
+           "transaction_currency": "USD", 
+           "transaction_amount": "100", 
+           "merchant_name": "Example Merchant"
        }
 }
 ```

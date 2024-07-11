@@ -3200,7 +3200,7 @@ events element convert string to json:
 | --- | --- |--- |
 | action |String |  depositcard-balance-updated |
 | events[n].params.otp |String | 验证码 |
-| events[n].params.card_no |String | 验证码 |
+| events[n].params.card_no |String | 卡id |
 | events[n].params.transaction_currency |String | 交易货币 |
 | events[n].params.transaction_amount |String | 交易金额 |
 | events[n].params.merchant_name |String | 商户名 |

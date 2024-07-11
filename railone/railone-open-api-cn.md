@@ -3198,7 +3198,7 @@ events element convert string to json:
 
 | 名称| 类型|描述 |
 | --- | --- |--- |
-| action |String |  depositcard-balance-updated |
+| action |String |  card-3ds-otp |
 | events[n].params.otp |String | 验证码 |
 | events[n].params.card_no |String | 卡id |
 | events[n].params.transaction_currency |String | 交易货币 |
@@ -3239,20 +3239,20 @@ method：POST
 
 | Parameter |  Type  | Requirement  |Description |
 | :------------: | :----: | :----------: |:---------- |
-
+| action |String | optional | deposit-status, card-3ds-otp |
 
 - 响应：
 
 
 | 名称| 类型|描述 |
 | --- | --- |--- |
-| action |String |  deposit-status|
+| action |String |  action名称 |
 | events[n].params |Object | 事件参数 |
 
 示例：
 ```
 {
-    "action": "test",
+    "action": "deposit-status",
     "events": [
         "{\"id\":\"bc76488ddda4\",\"create_time\":1585293811000,\"params\":{}}"
     ]

@@ -408,7 +408,8 @@ method：GET
 - Request:
 
 ```text
-url：/api/v1/institution/estimation/currency
+内扣 url：/api/v1/institution/estimation/currency
+外扣 url：/api/v1/institution/estimation/currency/external-deduction
 method：POST
 ```
 

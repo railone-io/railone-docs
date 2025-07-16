@@ -3214,6 +3214,7 @@ events element convert string to json:
 | events[n].params.transaction_currency |String | 交易货币 |
 | events[n].params.transaction_amount |String | 交易金额 |
 | events[n].params.merchant_name |String | 商户名 |
+| events[n].params.email |String | 用户邮箱 |
 
 示例：
 ```
@@ -3233,7 +3234,8 @@ events element convert string to json:
            "card_no": "78833000000198766",
            "transaction_currency": "USD", 
            "transaction_amount": "100", 
-           "merchant_name": "Example Merchant"
+           "merchant_name": "Example Merchant",
+	   "email": "uqptestmq@163.com"
        }
 }
 ```

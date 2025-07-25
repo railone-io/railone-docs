@@ -376,12 +376,16 @@ method：GET
             {
                 "min": "0",
                 "max": "1000",
-                "step_rate": "0.05"
+                "step_rate": "0.05",
+		"cardcurrency_consumption_rate": "0.01",
+		"noncardcurrency_consumption_rate": "0.02"
             },
             {
                 "min": "1000",
                 "max": "2000",
-                "step_rate": "0.03"
+                "step_rate": "0.03",
+		"cardcurrency_consumption_rate": "0.01",
+		"noncardcurrency_consumption_rate": "0.02"
             }
         ],
         "bank_atm_fee": "0",
@@ -398,6 +402,8 @@ method：GET
 |   max_deposit   | String |           单笔最大充值金额（法币）           |
 |   exchange_rate   | String |           USDT兑换相应法币的汇率           |
 |   loading_rate   | String |           给用户充值时付给 Railone 的阶梯费率，大部分卡只有一阶费率           |
+|   loading_rate[0].cardcurrency_consumption_rate   | String |           本币手续费           |
+|   loading_rate[0].noncardcurrency_consumption_rate   | String |           非本币手续费           |
 |   bank_transaction_rate   | String |          银行卡刷卡消费的手续费率           |
 |   bank_atm_rate   | String |          ATM取款时的手续费率           |
 |   bank_atm_fee   | String |          ATM取款时的固定手续费           |
